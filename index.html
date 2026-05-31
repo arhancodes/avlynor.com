@@ -379,6 +379,164 @@
     position: relative;
     perspective: 1400px;
   }
+
+  /* ----------------------------------------------------------------
+     Biomarker mockup — matches the live biomarker.avlynor.com/demo
+     aesthetic: cards-in-card, system sans, condition pills, mono
+     metric values. Auto-themes via the same vars as the rest of the
+     site, so it follows the dark-mode toggle.
+  ----------------------------------------------------------------*/
+  .bm-card {
+    background: var(--bg-2);
+    border: 1px solid var(--line-strong);
+    border-radius: 14px;
+    padding: 22px 24px 18px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: var(--cream);
+    box-shadow:
+      0 12px 40px -16px rgba(var(--shadow-deep), var(--shadow-deep-alpha)),
+      var(--shadow-gold);
+    line-height: 1.45;
+  }
+  .bm-head {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .bm-h1 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: -0.3px;
+    margin-bottom: 4px;
+    line-height: 1.15;
+  }
+  .bm-sub {
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 0.01em;
+  }
+  .bm-statline { flex-shrink: 0; }
+
+  .bm-summary {
+    background: rgba(var(--nav-bg-rgba), 0.45);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--gold);
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-bottom: 14px;
+    color: var(--cream);
+  }
+  .bm-summary strong { color: var(--gold); font-weight: 700; }
+
+  .bm-inner {
+    background: var(--bg-1);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+  }
+  .bm-inner-head {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 12px;
+  }
+  .bm-h2 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--muted);
+    margin-bottom: 10px;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+  }
+  .bm-inner-head .bm-h2 { margin-bottom: 0; }
+
+  /* HVI: horizontal bar instead of circular gauge — matches the
+     real demo's flat-data presentation, no aspirational dial */
+  .bm-hvi {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: center;
+  }
+  .bm-hvi-bar {
+    height: 8px;
+    background: var(--bg-2);
+    border-radius: 999px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+  }
+  .bm-hvi-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold));
+    border-radius: 999px;
+  }
+  .bm-hvi-num {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: -0.02em;
+  }
+  .bm-hvi-denom {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 500;
+    margin-left: 4px;
+  }
+
+  /* Pills — match the real demo's status-pill styling */
+  .bm-pill {
+    display: inline-flex; align-items: center;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+  }
+  .bm-pill-normal  { background: var(--ok-bg);   color: var(--ok-text); border-color: var(--ok-border); }
+  .bm-pill-monitor { background: rgba(217, 119, 6, 0.12); color: #b45309; border-color: rgba(217, 119, 6, 0.30); }
+  .bm-pill-alert   { background: rgba(220, 38, 38, 0.12); color: var(--danger); border-color: rgba(220, 38, 38, 0.30); }
+  [data-theme="dark"] .bm-pill-monitor { color: #e8a259; }
+
+  /* Metric + condition rows — same skeleton as the real demo */
+  .bm-metric, .bm-cond {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 13px;
+  }
+  .bm-metric:last-child,
+  .bm-cond:last-child { border-bottom: none; }
+  .bm-name { color: var(--muted); }
+  .bm-val {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+    font-weight: 600;
+    color: var(--cream);
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+
+  .bm-mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .bm-foot {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--line);
+    font-size: 10.5px;
+    color: var(--muted);
+    text-align: center;
+    letter-spacing: 0.04em;
+  }
+  .bm-foot .bm-mono { font-size: 10.5px; }
+
   .report-card {
     position: relative;
     background: linear-gradient(160deg, var(--card-grad-1), var(--card-grad-2));
@@ -1137,114 +1295,58 @@
     <!-- RIGHT: biomarker report preview -->
     <div class="hero-preview reveal">
 
-      <!-- Small left-stack: nurse alert card behind -->
-      <div class="stacked-mini left" aria-hidden="true">
-        <div class="mini-label">Nurse navigator</div>
-        <div class="mini-row"><span>Bed 304 · Lindgren</span><strong>STABLE</strong></div>
-        <div class="mini-row"><span>Bed 312 · Eriksson</span><strong style="color:#e8a259">MONITOR</strong></div>
-        <div class="mini-row"><span>Bed 318 · Andersson</span><strong>STABLE</strong></div>
-        <div class="mini-row"><span>Bed 322 · Holm</span><strong>STABLE</strong></div>
-      </div>
-
-      <!-- Main: biomarker report card -->
-      <div class="report-card">
-        <div class="report-head">
+      <!-- Mockup mirrors the real biomarker.avlynor.com/demo aesthetic:
+           cards-in-card, system sans, condition pills, mono metric values. -->
+      <div class="bm-card">
+        <div class="bm-head">
           <div>
-            <div class="report-eyebrow">RECOVERY REPORT · DAY 6</div>
-            <div class="report-title">Margareta L., 68</div>
+            <div class="bm-h1">Tether Biomarker Engine</div>
+            <div class="bm-sub">Patient p-1043 · Day 6 · <span class="bm-mono">vps-2.9.0</span></div>
           </div>
-          <div class="report-meta">
-            Session <strong>14/30</strong><br/>
-            08:14 · Today
+          <div class="bm-statline">
+            <span class="bm-pill bm-pill-normal">SIGNAL OK</span>
           </div>
         </div>
 
-        <div class="score-row">
-          <div class="score-ring">
-            <svg viewBox="0 0 120 120">
-              <circle class="track" cx="60" cy="60" r="54"/>
-              <circle class="value" cx="60" cy="60" r="54"/>
-            </svg>
-            <div class="score-center">
-              <div class="score-num">84</div>
-              <div class="score-denom">/ 100</div>
+        <div class="bm-summary">
+          <strong>Recovering normally.</strong>
+          Within clinical range across the 3-task voice protocol. No nurse action required.
+        </div>
+
+        <div class="bm-inner">
+          <div class="bm-inner-head">
+            <h2 class="bm-h2">Healthy Voice Index</h2>
+            <span class="bm-pill bm-pill-normal">STABLE</span>
+          </div>
+          <div class="bm-hvi">
+            <div class="bm-hvi-bar">
+              <div class="bm-hvi-fill" style="width: 84%"></div>
             </div>
-          </div>
-          <div class="score-side">
-            <div class="score-label">HEALTHY VOICE INDEX</div>
-            <div class="score-name">Recovering normally</div>
-            <span class="status-pill">Stable</span>
+            <div class="bm-hvi-num"><span class="bm-mono">84</span><span class="bm-hvi-denom">/ 100</span></div>
           </div>
         </div>
 
-        <!-- 7-day jitter trend with clinical threshold -->
-        <div class="trend">
-          <div class="trend-head">
-            <span class="trend-label">JITTER · 7-DAY TREND</span>
-            <span class="trend-now">0.62%<span class="delta">−0.08</span></span>
-          </div>
-          <svg viewBox="0 0 280 56" preserveAspectRatio="none" class="trend-svg">
-            <!-- clinical threshold line at 1.04% (mapped to y=14) -->
-            <line x1="0" y1="14" x2="280" y2="14" class="trend-threshold" stroke-width="0.7" stroke-dasharray="3 3"/>
-            <text x="276" y="11" text-anchor="end" font-family="Inter, sans-serif" font-size="7" class="trend-threshold-label" letter-spacing="0.5">1.04% threshold</text>
-            <!-- trend area fill -->
-            <path d="M0,40 L40,34 L80,38 L120,30 L160,32 L200,28 L240,30 L280,26 L280,56 L0,56 Z"
-                  class="trend-area"/>
-            <!-- trend line -->
-            <path d="M0,40 L40,34 L80,38 L120,30 L160,32 L200,28 L240,30 L280,26"
-                  class="trend-line" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-            <!-- dots on every day -->
-            <circle cx="0" cy="40" r="1.8" class="trend-dot"/>
-            <circle cx="40" cy="34" r="1.8" class="trend-dot"/>
-            <circle cx="80" cy="38" r="1.8" class="trend-dot"/>
-            <circle cx="120" cy="30" r="1.8" class="trend-dot"/>
-            <circle cx="160" cy="32" r="1.8" class="trend-dot"/>
-            <circle cx="200" cy="28" r="1.8" class="trend-dot"/>
-            <circle cx="240" cy="30" r="1.8" class="trend-dot"/>
-            <circle cx="280" cy="26" r="2.4" class="trend-dot trend-dot-today" stroke-width="1"/>
-          </svg>
+        <div class="bm-inner">
+          <h2 class="bm-h2">Vocal biomarkers</h2>
+          <div class="bm-metric"><span class="bm-name">Jitter</span><span class="bm-val">0.62 %</span></div>
+          <div class="bm-metric"><span class="bm-name">Shimmer</span><span class="bm-val">3.10 %</span></div>
+          <div class="bm-metric"><span class="bm-name">HNR</span><span class="bm-val">21.4 dB</span></div>
+          <div class="bm-metric"><span class="bm-name">CPPS</span><span class="bm-val">14.8 dB</span></div>
+          <div class="bm-metric"><span class="bm-name">F0 mean</span><span class="bm-val">192 Hz</span></div>
+          <div class="bm-metric"><span class="bm-name">Speech rate</span><span class="bm-val">4.2 syll/s</span></div>
         </div>
 
-        <div class="bio-rows">
-          <div class="bio-row">
-            <span class="bio-name">Jitter</span>
-            <span class="bio-value">0.62%<span class="ok">✓</span></span>
-          </div>
-          <div class="bio-row">
-            <span class="bio-name">Shimmer</span>
-            <span class="bio-value">3.1%<span class="ok">✓</span></span>
-          </div>
-          <div class="bio-row">
-            <span class="bio-name">HNR</span>
-            <span class="bio-value">21.4 dB<span class="ok">✓</span></span>
-          </div>
-          <div class="bio-row">
-            <span class="bio-name">Speech rate</span>
-            <span class="bio-value">4.2 syll/s<span class="ok">✓</span></span>
-          </div>
-          <div class="bio-row">
-            <span class="bio-name">CPPS</span>
-            <span class="bio-value">14.8 dB<span class="ok">✓</span></span>
-          </div>
-          <div class="bio-row">
-            <span class="bio-name">F0 stability</span>
-            <span class="bio-value">192 Hz<span class="ok">✓</span></span>
-          </div>
+        <div class="bm-inner">
+          <h2 class="bm-h2">Condition risk</h2>
+          <div class="bm-cond"><span class="bm-name">Respiratory infection</span><span class="bm-pill bm-pill-normal">NORMAL</span></div>
+          <div class="bm-cond"><span class="bm-name">Voice dysphonia</span><span class="bm-pill bm-pill-normal">NORMAL</span></div>
+          <div class="bm-cond"><span class="bm-name">Cardiovascular stress</span><span class="bm-pill bm-pill-monitor">MONITOR</span></div>
+          <div class="bm-cond"><span class="bm-name">Sleep-breathing</span><span class="bm-pill bm-pill-normal">NORMAL</span></div>
         </div>
 
-        <div class="verdict">
-          <strong>SENTINEL VERDICT</strong>
-          Within normal range. No nurse action required. Next check-in scheduled for tomorrow 08:00.
+        <div class="bm-foot">
+          <span class="bm-mono">POST /analyze</span> · sample 14/30 · 18.4 s · 26 lang · 100+ features
         </div>
-      </div>
-
-      <!-- Small right-stack: patient app card behind -->
-      <div class="stacked-mini right" aria-hidden="true">
-        <div class="mini-label">Patient app · today</div>
-        <div class="mini-row"><span>Morning check-in</span><strong>15s ✓</strong></div>
-        <div class="mini-row"><span>Recovery score</span><strong>84</strong></div>
-        <div class="mini-row"><span>Medication taken</span><strong>2 / 3</strong></div>
-        <div class="mini-row"><span>Days since surgery</span><strong>6</strong></div>
       </div>
 
     </div>
