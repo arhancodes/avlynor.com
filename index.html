@@ -6,9 +6,14 @@
 <title>Avlynor · Tether · One check-in. One guardian. Zero friction.</title>
 <meta name="description" content="Avlynor builds Tether, a clinical companion app for post-discharge patients, with a passive voice biomarker platform that detects deterioration 48 hours before any symptom." />
 <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+<!-- Custom fonts disabled — site uses system sans (matches docs.avlynor.com).
+     To re-enable Cormorant + Cinzel + Inter, uncomment the block below and
+     revert the font-family declarations via `git revert HEAD`. -->
+<!--
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+-->
 
 <!-- Theme: read saved preference and apply BEFORE first paint to avoid flash -->
 <script>
@@ -108,7 +113,7 @@
   body {
     background: var(--bg-0);
     color: var(--cream);
-    font-family: 'Inter', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-weight: 300;
     line-height: 1.55;
     overflow-x: hidden;
@@ -164,7 +169,7 @@
   }
   nav.scrolled .brand img { width: 34px; height: 34px; }
   .brand-name {
-    font-family: 'Cinzel', serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-weight: 500;
     font-size: 22px;
     letter-spacing: 0.18em;
@@ -231,7 +236,7 @@
   }
   @media (max-width: 800px) { section { padding: 80px 24px; } }
   h1, h2, h3 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-weight: 500;
     color: var(--cream);
     line-height: 1.05;
@@ -278,7 +283,7 @@
   }
 
   .hero-eyebrow {
-    font-family: 'Cinzel', serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-size: 13px;
     letter-spacing: 0.3em;
     color: var(--gold);
@@ -288,7 +293,7 @@
     font-size: clamp(64px, 8vw, 128px);
   }
   .hero-tag {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-style: italic;
     font-size: clamp(20px, 2.2vw, 26px);
     color: var(--gold);
@@ -319,7 +324,7 @@
     /* Use Inter for stat numerals — Cormorant's old-style figures
        have descenders that look broken in hero stats. Inter with
        lining + tabular figures is clean and confident. */
-    font-family: 'Inter', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-weight: 300;
     font-size: clamp(36px, 4.6vw, 60px);
     color: var(--gold);
@@ -352,7 +357,7 @@
     cursor: pointer;
     display: inline-block;
     border: none;
-    font-family: 'Inter', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
   .btn-gold {
     background: var(--gold);
@@ -566,14 +571,14 @@
     border-bottom: 1px solid var(--line);
   }
   .report-eyebrow {
-    font-family: 'Cinzel', serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-size: 10px;
     letter-spacing: 0.32em;
     color: var(--gold);
     margin-bottom: 4px;
   }
   .report-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-weight: 500;
     color: var(--cream);
     font-size: 22px;
@@ -585,7 +590,7 @@
     font-size: 11px;
     letter-spacing: 0.06em;
     line-height: 1.55;
-    font-family: 'Inter', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
   .report-meta strong {
     color: var(--cream);
@@ -628,7 +633,7 @@
     align-items: center; justify-content: center;
   }
   .score-num {
-    font-family: 'Inter', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-weight: 300;
     font-size: 42px;
     line-height: 1;
@@ -637,7 +642,7 @@
     font-variant-numeric: lining-nums tabular-nums;
   }
   .score-denom {
-    font-family: 'Cinzel', serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-size: 9px;
     letter-spacing: 0.22em;
     color: var(--muted);
@@ -647,13 +652,13 @@
     display: flex; flex-direction: column; gap: 10px;
   }
   .score-label {
-    font-family: 'Cinzel', serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-size: 11px;
     letter-spacing: 0.24em;
     color: var(--muted);
   }
   .score-name {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-size: 26px;
     color: var(--cream);
     line-height: 1;
@@ -664,7 +669,7 @@
     gap: 6px;
     padding: 5px 12px;
     border-radius: 999px;
-    font-family: 'Inter', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-size: 10px;
     font-weight: 500;
     letter-spacing: 0.18em;
@@ -693,13 +698,13 @@
     margin-bottom: 6px;
   }
   .trend-label {
-    font-family: 'Cinzel', serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-size: 10px;
     letter-spacing: 0.22em;
     color: var(--muted);
   }
   .trend-now {
-    font-family: 'Inter', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-size: 13px;
     color: var(--cream);
     font-variant-numeric: lining-nums tabular-nums;
@@ -735,10 +740,10 @@
     font-size: 12px;
   }
   .bio-row:nth-last-child(-n+2) { border-bottom: none; }
-  .bio-name { color: var(--muted); letter-spacing: 0.06em; font-family: 'Inter', sans-serif; }
+  .bio-name { color: var(--muted); letter-spacing: 0.06em; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
   .bio-value {
     color: var(--cream);
-    font-family: 'Inter', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-weight: 500;
     font-variant-numeric: lining-nums tabular-nums;
   }
@@ -749,7 +754,7 @@
     border-left: 2px solid var(--gold);
     padding: 12px 16px;
     border-radius: 4px;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-style: italic;
     font-size: 15px;
     color: var(--cream);
@@ -758,7 +763,7 @@
   .verdict strong {
     color: var(--gold);
     font-style: normal;
-    font-family: 'Cinzel', serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-size: 11px;
     letter-spacing: 0.2em;
     display: block;
@@ -795,11 +800,11 @@
     font-size: 11px;
     color: var(--muted);
     padding: 4px 0;
-    font-family: 'Inter', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
   .mini-row strong { color: var(--gold); font-weight: 500; }
   .mini-label {
-    font-family: 'Cinzel', serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-size: 9px;
     letter-spacing: 0.22em;
     color: var(--gold);
@@ -856,7 +861,7 @@
     to   { transform: translateX(-50%); }
   }
   .marquee-item {
-    font-family: 'Cinzel', serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-size: 13px;
     letter-spacing: 0.2em;
     color: var(--gold);
@@ -891,7 +896,7 @@
     transform: translateY(-3px);
   }
   .stat-card .n {
-    font-family: 'Inter', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-weight: 300;
     font-size: clamp(40px, 5vw, 60px);
     color: var(--gold);
@@ -912,7 +917,7 @@
     padding: 20px 28px;
     margin: 36px 0 56px;
     font-style: italic;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-size: clamp(18px, 1.8vw, 22px);
     color: var(--cream);
   }
@@ -938,11 +943,11 @@
     color: var(--gold);
     font-size: 12px;
     letter-spacing: 0.1em;
-    font-family: 'Cinzel', serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
   .step-title {
     color: var(--gold);
-    font-family: 'Cormorant Garamond', serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-size: clamp(20px, 2vw, 24px);
     font-weight: 500;
   }
@@ -962,7 +967,7 @@
     margin-top: 40px;
   }
   .roi-eyebrow {
-    font-family: 'Cinzel', serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-size: 13px;
     letter-spacing: 0.3em;
     color: var(--cream);
@@ -984,7 +989,7 @@
     padding-left: 12px;
   }
   .roi-bar .amount {
-    font-family: 'Inter', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-weight: 500;
     font-size: 22px;
     letter-spacing: -0.01em;
@@ -994,7 +999,7 @@
   .roi-note {
     color: var(--muted);
     font-style: italic;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-size: 18px;
     margin-top: 24px;
   }
@@ -1038,7 +1043,7 @@
     border-bottom: 1px solid var(--line);
     font-size: 14px;
   }
-  .compare thead th { font-family: 'Cinzel', serif; letter-spacing: 0.1em; font-weight: 500; font-size: 12px; }
+  .compare thead th { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; letter-spacing: 0.1em; font-weight: 500; font-size: 12px; }
   .compare th:first-child { color: var(--cream); }
   .compare th:nth-child(2) { background: rgba(29, 78, 216, 0.18); color: var(--gold-bright); text-align: center; }
   .compare th:nth-child(3) { background: rgba(220, 38, 38, 0.18); color: #dc2626; text-align: center; }
@@ -1047,7 +1052,7 @@
   .compare tbody tr:hover td { background: rgba(29, 78, 216, 0.03); }
   .moat {
     margin-top: 32px;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-style: italic;
     font-size: 20px;
     color: var(--gold);
@@ -1086,7 +1091,7 @@
   }
   .team-name {
     color: var(--gold);
-    font-family: 'Cormorant Garamond', serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-size: 24px;
     font-weight: 500;
     margin-bottom: 6px;
@@ -1143,14 +1148,14 @@
     position: relative;
   }
   .roadmap-card .q {
-    font-family: 'Cinzel', serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-size: 13px;
     letter-spacing: 0.2em;
     color: var(--gold);
     margin-bottom: 12px;
   }
   .roadmap-card .t {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-size: 20px;
     color: var(--cream);
     margin-bottom: 12px;
@@ -1192,7 +1197,7 @@
     color: var(--cream);
     border-radius: 999px;
     font-size: 14px;
-    font-family: 'Inter', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     outline: none;
     transition: border-color 0.2s;
   }
@@ -1219,7 +1224,7 @@
   .footer-mark {
     display: flex; align-items: center; gap: 10px;
     color: var(--gold);
-    font-family: 'Cinzel', serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     letter-spacing: 0.18em;
   }
   .footer-mark img { width: 28px; height: 28px; }
