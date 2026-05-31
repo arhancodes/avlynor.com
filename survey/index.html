@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Contribute to Tether — Voice Biomarker Research</title>
-<meta name="description" content="Donate 90 seconds of voice + a short health survey to improve Tether's voice biomarker accuracy. Anonymous. No audio is stored." />
+<meta name="description" content="Donate 90 seconds of voice + a short health survey to improve Tether's voice biomarker accuracy. Anonymous, stored securely, used only for research." />
 <style>
   :root{
     --blue-700:#1d4ed8;--blue-600:#2563eb;--blue-500:#3b82f6;--blue-100:#dbeafe;--blue-50:#eff6ff;
@@ -62,17 +62,17 @@
 <div class="wrap">
   <div class="logo">Avlynor · Tether Research</div>
   <h1>Help teach Tether's ear</h1>
-  <p class="sub">90 seconds of your voice + a short health check. Every contribution directly trains the voice biomarkers that catch patient deterioration early. Anonymous, and your audio is never stored.</p>
+  <p class="sub">90 seconds of your voice + a short health check. Every contribution directly trains the voice biomarkers that catch patient deterioration early. Anonymous — your recordings are stored securely and used only for research.</p>
 
   <!-- STEP 0: consent -->
   <div class="card step active" id="step-consent">
     <h2>Before you start</h2>
     <p>You'll record three short voice clips (hold "ahhh", read one sentence, say how you feel) and answer a few quick health questions.</p>
     <div class="privacy">
-      <strong>Your privacy.</strong> Your raw audio is <strong>never stored or sent anywhere it's kept</strong> — the engine extracts anonymous acoustic measurements (pitch stability, breathiness, etc.) and immediately discards the recording. We keep only those numbers + your survey answers + age/sex/language, with no name, email, or identifier. Because it's fully anonymous it can't be traced back or withdrawn after submission.
+      <strong>Your privacy.</strong> Your voice recordings are <strong>stored securely and used only to research and improve Tether's voice biomarkers</strong> — linked only to your survey answers + age/sex/language, with <strong>no name, email, phone, or any identifier</strong>. We keep the audio so our models keep getting more accurate over time. Because submissions are fully anonymous, they can't be traced back to you or withdrawn afterward.
     </div>
     <label class="consent"><input type="checkbox" id="consent-box" />
-      I'm 18+, I consent to my anonymous voice measurements and survey answers being used to improve Tether's research models.</label>
+      I'm 18+, I consent to my anonymous voice recordings and survey answers being stored and used to improve Tether's research models.</label>
     <div class="row"><button class="btn" id="consent-next" disabled>Start →</button></div>
   </div>
 
@@ -121,7 +121,7 @@
 
 <script>
 const ENGINE = "https://biomarker.avlynor.com";
-const state = { stepIdx: 0, recordings: [], recording_types: [], survey: {}, demo: {} };
+const state = { stepIdx: 0, recordings: [], recording_types: [], survey: {}, demo: {}, sampleRate: 16000 };
 const STEP_IDS = ["step-consent","step-demo","step-record","step-survey","step-done"];
 
 function show(idx){
@@ -148,8 +148,10 @@ document.getElementById("demo-next").addEventListener("click",()=>{
 async function recordClip(seconds){
   const stream=await navigator.mediaDevices.getUserMedia({audio:true});
   const ac=new (window.AudioContext||window.webkitAudioContext)({sampleRate:16000});
+  const rate=ac.sampleRate; // ACTUAL rate — iOS Safari & some browsers ignore the 16k request
   const src=ac.createMediaStreamSource(stream), proc=ac.createScriptProcessor(4096,1,1);
-  const chunks=[]; src.connect(proc); proc.connect(ac.destination);
+  const mute=ac.createGain(); mute.gain.value=0; // tap mic without echoing it to the speakers
+  const chunks=[]; src.connect(proc); proc.connect(mute); mute.connect(ac.destination);
   proc.onaudioprocess=e=>chunks.push(new Float32Array(e.inputBuffer.getChannelData(0)));
   await new Promise(r=>setTimeout(r,seconds*1000));
   proc.disconnect(); src.disconnect(); stream.getTracks().forEach(t=>t.stop());
@@ -157,7 +159,7 @@ async function recordClip(seconds){
   let off=0; for(const c of chunks){merged.set(c,off);off+=c.length;}
   const i16=new Int16Array(merged.length);
   for(let i=0;i<merged.length;i++){const s=Math.max(-1,Math.min(1,merged[i]));i16[i]=s<0?s*32768:s*32767;}
-  ac.close(); return Array.from(i16);
+  ac.close(); return {pcm:Array.from(i16), rate};
 }
 const REC_TASKS=[
   {key:"sustained_vowel",dur:6,prompt:"Hold a steady “ahhhh” for 5 seconds — same pitch and volume throughout."},
@@ -182,7 +184,7 @@ document.getElementById("rec-start").addEventListener("click",async()=>{
       dot.classList.add("live"); stateEl.textContent=`Recording ${t.dur}s…`;
       const clip=await recordClip(t.dur);
       dot.classList.remove("live"); stateEl.textContent="Saved ✓";
-      state.recordings.push(clip); state.recording_types.push(t.key);
+      state.recordings.push(clip.pcm); state.recording_types.push(t.key); state.sampleRate=clip.rate;
       await new Promise(r=>setTimeout(r,500));
     }
     renderRecDots(REC_TASKS.length);
@@ -254,7 +256,7 @@ document.getElementById("survey-submit").addEventListener("click",async()=>{
     const res=await fetch(ENGINE+"/contribute",{
       method:"POST",headers:{"Content-Type":"application/json"},
       body:JSON.stringify({
-        recordings:state.recordings, recording_types:state.recording_types, sampleRate:16000,
+        recordings:state.recordings, recording_types:state.recording_types, sampleRate:state.sampleRate||16000,
         survey:state.survey, age:state.demo.age, gender:state.demo.gender,
         language:state.demo.language, consent:true,
       }),
