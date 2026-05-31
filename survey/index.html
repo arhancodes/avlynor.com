@@ -117,8 +117,6 @@
     <p style="text-align:center" id="done-msg">Your contribution was recorded. You just made Tether a little more accurate.</p>
     <div class="row" style="justify-content:center"><a class="btn" href="/">Back to Avlynor</a></div>
   </div>
-
-  <div class="progress" id="progress"></div>
 </div>
 
 <script>
@@ -272,12 +270,6 @@ document.getElementById("survey-submit").addEventListener("click",async()=>{
     err.textContent="Could not submit: "+(e&&e.message||e); btn.disabled=false; btn.textContent="Submit contribution →";
   }
 });
-
-// live contribution count in the footer
-fetch(ENGINE+"/contribute/stats").then(r=>r.json()).then(d=>{
-  if(d&&typeof d.contributions==="number")
-    document.getElementById("progress").textContent=`${d.contributions} contributions so far — thank you.`;
-}).catch(()=>{});
 </script>
 </body>
 </html>
