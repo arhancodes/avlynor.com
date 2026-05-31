@@ -164,19 +164,20 @@
     color: var(--gold);
   }
   .brand img {
-    width: 44px; height: 44px;
-    transition: width 0.3s ease, height 0.3s ease;
+    height: 44px; width: auto;
+    display: block;
+    transition: height 0.3s ease;
   }
-  nav.scrolled .brand img { width: 34px; height: 34px; }
+  nav.scrolled .brand img { height: 34px; }
   .brand-name {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    font-weight: 500;
-    font-size: 22px;
+    font-weight: 600;
+    font-size: 20px;
     letter-spacing: 0.18em;
     color: var(--gold);
     transition: font-size 0.3s ease;
   }
-  nav.scrolled .brand-name { font-size: 18px; }
+  nav.scrolled .brand-name { font-size: 17px; }
   .nav-links {
     display: flex; gap: 36px;
     list-style: none;
@@ -1224,10 +1225,14 @@
   .footer-mark {
     display: flex; align-items: center; gap: 10px;
     color: var(--gold);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    letter-spacing: 0.18em;
   }
-  .footer-mark img { width: 28px; height: 28px; }
+  .footer-mark img { height: 32px; width: auto; display: block; }
+  .footer-mark-name {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    font-size: 14px;
+  }
 </style>
 </head>
 <body>
@@ -1237,7 +1242,7 @@
 <!-- ============================================================== -->
 <nav id="topnav">
   <a class="brand" href="#top">
-    <img src="./assets/avlynor-mark.svg" alt="Avlynor mark" />
+    <img src="./assets/avlynor-mark.png" alt="Avlynor" />
     <span class="brand-name">AVLYNOR</span>
   </a>
   <ul class="nav-links">
@@ -1604,8 +1609,8 @@
 <footer>
   <div class="footer-row">
     <div class="footer-mark">
-      <img src="./assets/avlynor-mark.svg" alt="Avlynor mark" />
-      AVLYNOR
+      <img src="./assets/avlynor-mark.png" alt="Avlynor mark" />
+      <span class="footer-mark-name">AVLYNOR</span>
     </div>
     <div>© 2026 Avlynor.</div>
     <div>
