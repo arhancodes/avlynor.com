@@ -9,28 +9,98 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+<!-- Theme: read saved preference and apply BEFORE first paint to avoid flash -->
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('avlynor-theme');
+      if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+    } catch (e) {}
+  })();
+</script>
 <style>
   /* -----------------------------------------------------------------
      Brand tokens — match the Avlynor logo
   ----------------------------------------------------------------- */
   :root {
-    /* Slate / blue palette — matches docs.avlynor.com + biomarker.avlynor.com.
-       Variable NAMES preserved (--gold, --cream, --bg-0) so the markup needs no rename;
-       only the VALUES change. To switch back to gold/dark-navy:
-         git reset --hard gold-version && git push --force-with-lease origin main */
-    --bg-0: #f8fafc;            /* slate-50 — page background */
-    --bg-1: #ffffff;            /* white — cards / panels */
-    --bg-2: #f1f5f9;            /* slate-100 — slightly elevated */
-    --gold: #1d4ed8;            /* blue-700 — primary accent (was gold) */
-    --gold-dark: #1e40af;       /* blue-800 */
-    --gold-bright: #3b82f6;     /* blue-500 */
-    --cream: #334155;           /* slate-700 — body text (was light cream on dark) */
-    --muted: #64748b;           /* slate-500 */
+    /* ---------- Light / blue theme (default) ----------
+       Matches docs.avlynor.com + biomarker.avlynor.com.
+       The user toggles to dark theme via the moon/sun button in the nav.
+       Dark theme = the original gold/dark-navy palette.
+       Variable NAMES are preserved across themes; only VALUES change. */
+    --bg-0: #f8fafc;
+    --bg-1: #ffffff;
+    --bg-2: #f1f5f9;
+    --gold: #1d4ed8;
+    --gold-dark: #1e40af;
+    --gold-bright: #3b82f6;
+    --cream: #334155;
+    --muted: #64748b;
     --line: rgba(29, 78, 216, 0.12);
     --line-strong: rgba(29, 78, 216, 0.30);
-    --danger: #dc2626;          /* red-600 */
-    --success: #16a34a;         /* green-600 */
+    --danger: #dc2626;
+    --success: #16a34a;
     --shadow-gold: 0 12px 40px -16px rgba(29, 78, 216, 0.25), 0 4px 14px -8px rgba(15, 23, 42, 0.10);
+
+    /* Tokens used by SVGs and gradient stops that can't read a single base var */
+    --bm-fill: rgba(29, 78, 216, 0.10);
+    --bm-shadow: rgba(29, 78, 216, 0.6);
+    --deco-1: #cbd5e1;
+    --deco-2: #94a3b8;
+    --deco-3: #64748b;
+    --deco-small: #e2e8f0;
+    --nav-bg-rgba: 248, 250, 252;
+    --card-grad-1: rgba(255, 255, 255, 0.96);
+    --card-grad-2: rgba(248, 250, 252, 0.96);
+    --mini-grad-1: rgba(255, 255, 255, 0.92);
+    --mini-grad-2: rgba(241, 245, 249, 0.92);
+    --shadow-deep: 0, 0, 0;
+    --shadow-deep-alpha: 0.18;
+    --ok-text: #16a34a;
+    --ok-bg: rgba(22, 163, 74, 0.10);
+    --ok-border: rgba(22, 163, 74, 0.35);
+    --waveform-glow: rgba(29, 78, 216, 0.45);
+  }
+
+  /* ---------- Dark / gold theme (toggle) ---------- */
+  [data-theme="dark"] {
+    --bg-0: #0a1830;
+    --bg-1: #0e1f3b;
+    --bg-2: #14274a;
+    --gold: #D4B572;
+    --gold-dark: #C9A55A;
+    --gold-bright: #E8CC85;
+    --cream: #F5EFE0;
+    --muted: #8A95B0;
+    --line: rgba(212, 181, 114, 0.18);
+    --line-strong: rgba(212, 181, 114, 0.38);
+    --danger: #C0413E;
+    --success: #2F9E7E;
+    --shadow-gold: 0 0 60px -20px rgba(212, 181, 114, 0.35);
+
+    --bm-fill: rgba(212, 181, 114, 0.10);
+    --bm-shadow: rgba(212, 181, 114, 0.6);
+    --deco-1: #8C7236;
+    --deco-2: #6B5526;
+    --deco-3: #3D2F12;
+    --deco-small: #2A2010;
+    --nav-bg-rgba: 10, 24, 48;
+    --card-grad-1: rgba(17, 30, 58, 0.92);
+    --card-grad-2: rgba(11, 20, 42, 0.92);
+    --mini-grad-1: rgba(11, 20, 42, 0.85);
+    --mini-grad-2: rgba(7, 13, 27, 0.9);
+    --shadow-deep: 0, 0, 0;
+    --shadow-deep-alpha: 0.7;
+    --ok-text: #6fcfac;
+    --ok-bg: rgba(47, 158, 126, 0.16);
+    --ok-border: rgba(47, 158, 126, 0.4);
+    --waveform-glow: rgba(212, 181, 114, 0.7);
+  }
+
+  /* Smooth crossfade on theme switch */
+  body, .report-card, .stacked-mini, nav, .stat-card, .audience-card, .team-card, .roi, .compare th, .compare td, .verdict, .trend, .bio-row, .footer-mark, footer {
+    transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -55,13 +125,13 @@
   }
   .deco-circle.large {
     width: 540px; height: 540px;
-    background: radial-gradient(circle at 30% 30%, #cbd5e1 0%, #94a3b8 50%, #64748b 100%);
+    background: radial-gradient(circle at 30% 30%, var(--deco-1) 0%, var(--deco-2) 50%, var(--deco-3) 100%);
     right: -180px; top: -120px;
     opacity: 0.85;
   }
   .deco-circle.small {
     width: 140px; height: 140px;
-    background: #e2e8f0;
+    background: var(--deco-small);
     right: 80px; top: 530px;
     opacity: 0.9;
   }
@@ -73,14 +143,14 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
     padding: 22px 56px;
-    background: rgba(248, 250, 252, 0.7);
+    background: rgba(var(--nav-bg-rgba), 0.7);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid transparent;
     transition: padding 0.3s ease, background 0.3s ease, border-color 0.3s ease;
   }
   nav.scrolled {
     padding: 12px 56px;
-    background: rgba(248, 250, 252, 0.92);
+    background: rgba(var(--nav-bg-rgba), 0.92);
     border-bottom-color: var(--line);
   }
   .brand {
@@ -125,6 +195,25 @@
     transition: all 0.25s ease;
   }
   .nav-cta:hover { background: var(--gold); color: var(--bg-0); }
+  .nav-right { display: flex; align-items: center; gap: 14px; }
+  .theme-toggle {
+    background: transparent;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    width: 38px; height: 38px;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: var(--gold);
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+  }
+  .theme-toggle:hover { background: rgba(var(--nav-bg-rgba), 0.5); border-color: var(--gold); }
+  .theme-toggle svg { width: 18px; height: 18px; }
+  .theme-toggle .icon-sun { display: none; }
+  .theme-toggle .icon-moon { display: block; }
+  [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+  [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
   @media (max-width: 800px) {
     nav { padding: 16px 24px; }
     nav.scrolled { padding: 10px 24px; }
@@ -292,14 +381,14 @@
   }
   .report-card {
     position: relative;
-    background: linear-gradient(160deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.92));
+    background: linear-gradient(160deg, var(--card-grad-1), var(--card-grad-2));
     border: 1px solid var(--line-strong);
     border-radius: 14px;
     padding: 28px 30px 26px;
     box-shadow:
       0 0 80px -20px rgba(29, 78, 216, 0.22),
-      0 30px 70px -25px rgba(0, 0, 0, 0.7),
-      inset 0 1px 0 rgba(232, 204, 133, 0.10);
+      0 30px 70px -25px rgba(var(--shadow-deep), var(--shadow-deep-alpha)),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
     backdrop-filter: blur(8px);
     transform: rotate(0.5deg);
     transition: transform 0.5s ease;
@@ -422,20 +511,20 @@
     font-weight: 500;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    background: rgba(47, 158, 126, 0.16);
-    color: #6fcfac;
-    border: 1px solid rgba(47, 158, 126, 0.4);
+    background: var(--ok-bg);
+    color: var(--ok-text);
+    border: 1px solid var(--ok-border);
     width: fit-content;
   }
   .status-pill::before {
     content: ""; width: 6px; height: 6px; border-radius: 50%;
-    background: #6fcfac;
-    box-shadow: 0 0 6px #6fcfac;
+    background: var(--ok-text);
+    box-shadow: 0 0 6px var(--ok-text);
   }
 
   /* 7-day trend mini chart */
   .trend {
-    background: rgba(241, 245, 249, 0.55);
+    background: rgba(var(--nav-bg-rgba), 0.55);
     border: 1px solid var(--line);
     border-radius: 8px;
     padding: 14px 16px 10px;
@@ -458,11 +547,21 @@
     font-variant-numeric: lining-nums tabular-nums;
   }
   .trend-now .delta {
-    color: #6fcfac;
+    color: var(--ok-text);
     font-size: 11px;
     margin-left: 6px;
   }
   .trend svg { display: block; width: 100%; height: 56px; }
+  .trend-svg .trend-threshold { stroke: rgba(220, 38, 38, 0.6); }
+  .trend-svg .trend-threshold-label { fill: rgba(220, 38, 38, 0.7); }
+  .trend-svg .trend-area { fill: var(--bm-fill); }
+  .trend-svg .trend-line {
+    fill: none;
+    stroke: var(--gold);
+    filter: drop-shadow(0 0 3px var(--bm-shadow));
+  }
+  .trend-svg .trend-dot { fill: var(--gold); }
+  .trend-svg .trend-dot-today { fill: var(--gold-bright); stroke: var(--gold); }
 
   /* Biomarker rows */
   .bio-rows {
@@ -485,7 +584,7 @@
     font-weight: 500;
     font-variant-numeric: lining-nums tabular-nums;
   }
-  .bio-value .ok { color: #6fcfac; margin-left: 4px; font-size: 10px; }
+  .bio-value .ok { color: var(--ok-text); margin-left: 4px; font-size: 10px; }
 
   .verdict {
     background: linear-gradient(90deg, rgba(29, 78, 216, 0.12), rgba(29, 78, 216, 0.02));
@@ -512,11 +611,11 @@
   /* Stacked small "preview" cards behind the main one */
   .stacked-mini {
     position: absolute;
-    background: linear-gradient(160deg, rgba(248, 250, 252, 0.85), rgba(241, 245, 249, 0.9));
+    background: linear-gradient(160deg, var(--mini-grad-1), var(--mini-grad-2));
     border: 1px solid var(--line);
     border-radius: 10px;
     padding: 14px 16px;
-    box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 20px 50px -20px rgba(var(--shadow-deep), var(--shadow-deep-alpha));
     backdrop-filter: blur(6px);
     z-index: -1;
   }
@@ -785,7 +884,7 @@
   .compare th:first-child { color: var(--cream); }
   .compare th:nth-child(2) { background: rgba(29, 78, 216, 0.18); color: var(--gold-bright); text-align: center; }
   .compare th:nth-child(3) { background: rgba(220, 38, 38, 0.18); color: #dc2626; text-align: center; }
-  .compare td:nth-child(2) { background: rgba(47, 158, 126, 0.06); text-align: center; color: var(--success); font-size: 20px; }
+  .compare td:nth-child(2) { background: var(--ok-bg); text-align: center; color: var(--success); font-size: 20px; }
   .compare td:nth-child(3) { background: rgba(220, 38, 38, 0.06); text-align: center; color: #dc2626; font-size: 18px; }
   .compare tbody tr:hover td { background: rgba(29, 78, 216, 0.03); }
   .moat {
@@ -985,7 +1084,18 @@
     <li><a href="#moat">Why us</a></li>
     <li><a href="#team">Team</a></li>
   </ul>
-  <a href="#cta" class="nav-cta">Get in touch</a>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" type="button">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+      </svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </button>
+    <a href="#cta" class="nav-cta">Get in touch</a>
+  </div>
 </nav>
 
 <!-- ============================================================== -->
@@ -1073,26 +1183,25 @@
             <span class="trend-label">JITTER · 7-DAY TREND</span>
             <span class="trend-now">0.62%<span class="delta">−0.08</span></span>
           </div>
-          <svg viewBox="0 0 280 56" preserveAspectRatio="none">
+          <svg viewBox="0 0 280 56" preserveAspectRatio="none" class="trend-svg">
             <!-- clinical threshold line at 1.04% (mapped to y=14) -->
-            <line x1="0" y1="14" x2="280" y2="14" stroke="rgba(220, 38, 38, 0.6)" stroke-width="0.7" stroke-dasharray="3 3"/>
-            <text x="276" y="11" text-anchor="end" font-family="Inter, sans-serif" font-size="7" fill="rgba(232, 162, 138, 0.7)" letter-spacing="0.5">1.04% threshold</text>
+            <line x1="0" y1="14" x2="280" y2="14" class="trend-threshold" stroke-width="0.7" stroke-dasharray="3 3"/>
+            <text x="276" y="11" text-anchor="end" font-family="Inter, sans-serif" font-size="7" class="trend-threshold-label" letter-spacing="0.5">1.04% threshold</text>
             <!-- trend area fill -->
             <path d="M0,40 L40,34 L80,38 L120,30 L160,32 L200,28 L240,30 L280,26 L280,56 L0,56 Z"
-                  fill="rgba(29, 78, 216, 0.10)"/>
+                  class="trend-area"/>
             <!-- trend line -->
             <path d="M0,40 L40,34 L80,38 L120,30 L160,32 L200,28 L240,30 L280,26"
-                  fill="none" stroke="#1d4ed8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"
-                  filter="drop-shadow(0 0 3px rgba(29, 78, 216, 0.6))"/>
+                  class="trend-line" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
             <!-- dots on every day -->
-            <circle cx="0" cy="40" r="1.8" fill="#1d4ed8"/>
-            <circle cx="40" cy="34" r="1.8" fill="#1d4ed8"/>
-            <circle cx="80" cy="38" r="1.8" fill="#1d4ed8"/>
-            <circle cx="120" cy="30" r="1.8" fill="#1d4ed8"/>
-            <circle cx="160" cy="32" r="1.8" fill="#1d4ed8"/>
-            <circle cx="200" cy="28" r="1.8" fill="#1d4ed8"/>
-            <circle cx="240" cy="30" r="1.8" fill="#1d4ed8"/>
-            <circle cx="280" cy="26" r="2.4" fill="#3b82f6" stroke="#1d4ed8" stroke-width="1"/>
+            <circle cx="0" cy="40" r="1.8" class="trend-dot"/>
+            <circle cx="40" cy="34" r="1.8" class="trend-dot"/>
+            <circle cx="80" cy="38" r="1.8" class="trend-dot"/>
+            <circle cx="120" cy="30" r="1.8" class="trend-dot"/>
+            <circle cx="160" cy="32" r="1.8" class="trend-dot"/>
+            <circle cx="200" cy="28" r="1.8" class="trend-dot"/>
+            <circle cx="240" cy="30" r="1.8" class="trend-dot"/>
+            <circle cx="280" cy="26" r="2.4" class="trend-dot trend-dot-today" stroke-width="1"/>
           </svg>
         </div>
 
@@ -1404,6 +1513,22 @@
 <!-- JS -->
 <!-- ============================================================== -->
 <script>
+  // -----------------------------------------------------------------
+  // Theme toggle — light (slate/blue) ↔ dark (gold/navy)
+  // Persisted in localStorage. Applied pre-paint by inline script in <head>.
+  // -----------------------------------------------------------------
+  (function () {
+    const btn = document.getElementById('themeToggle');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const cur = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      const next = cur === 'dark' ? 'light' : 'dark';
+      if (next === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+      else document.documentElement.removeAttribute('data-theme');
+      try { localStorage.setItem('avlynor-theme', next); } catch (e) {}
+    });
+  })();
+
   // -----------------------------------------------------------------
   // Nav compresses on scroll
   // -----------------------------------------------------------------
