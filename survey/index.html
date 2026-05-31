@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contribute to Tether — Voice Biomarker Research</title>
+<meta name="description" content="Donate 90 seconds of voice + a short health survey to improve Tether's voice biomarker accuracy. Anonymous. No audio is stored." />
+<style>
+  :root{
+    --blue-700:#1d4ed8;--blue-600:#2563eb;--blue-500:#3b82f6;--blue-100:#dbeafe;--blue-50:#eff6ff;
+    --slate-900:#0f172a;--slate-700:#334155;--slate-600:#475569;--slate-500:#64748b;--slate-400:#94a3b8;
+    --slate-200:#e2e8f0;--slate-100:#f1f5f9;--slate-50:#f8fafc;
+    --green-600:#16a34a;--green-100:#dcfce7;--red-600:#dc2626;--amber-600:#d97706;--amber-100:#fef3c7;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--slate-700);background:var(--slate-50);line-height:1.65;}
+  .wrap{max-width:620px;margin:0 auto;padding:40px 20px 100px;}
+  .logo{font-size:13px;font-weight:700;letter-spacing:2px;color:var(--blue-700);text-transform:uppercase;margin-bottom:6px;}
+  h1{font-size:28px;font-weight:800;color:var(--slate-900);letter-spacing:-0.5px;margin-bottom:10px;}
+  h2{font-size:19px;font-weight:700;color:var(--slate-900);margin:0 0 14px;}
+  p{margin-bottom:12px;}
+  .sub{color:var(--slate-500);font-size:15px;margin-bottom:24px;}
+  .card{background:#fff;border:1px solid var(--slate-200);border-radius:16px;padding:24px;margin-bottom:18px;}
+  .step{display:none;}
+  .step.active{display:block;}
+  label{display:block;font-size:14px;font-weight:600;color:var(--slate-700);margin:16px 0 6px;}
+  input[type=number],input[type=text],select{width:100%;padding:11px 13px;border:1px solid var(--slate-200);border-radius:9px;font-size:15px;font-family:inherit;color:var(--slate-900);background:#fff;}
+  input:focus,select:focus{outline:none;border-color:var(--blue-500);box-shadow:0 0 0 3px rgba(59,130,246,.15);}
+  .scale{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px;}
+  .scale button{flex:1;min-width:28px;aspect-ratio:1;border:1px solid var(--slate-200);background:var(--slate-50);border-radius:7px;font-size:13px;font-weight:600;color:var(--slate-600);cursor:pointer;transition:.12s;}
+  .scale button.on{background:var(--blue-600);border-color:var(--blue-600);color:#fff;}
+  .ends{display:flex;justify-content:space-between;font-size:11px;color:var(--slate-400);margin-top:3px;}
+  .q{margin-bottom:18px;}
+  .q .qt{font-size:14px;font-weight:600;color:var(--slate-700);margin-bottom:8px;}
+  .opts{display:flex;flex-direction:column;gap:6px;}
+  .opts button{text-align:left;padding:10px 12px;border:1px solid var(--slate-200);background:#fff;border-radius:9px;font-size:14px;color:var(--slate-700);cursor:pointer;font-family:inherit;}
+  .opts button.on{background:var(--blue-50);border-color:var(--blue-500);color:var(--blue-700);font-weight:600;}
+  .btn{display:inline-block;padding:13px 26px;background:var(--blue-700);color:#fff;border:0;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;}
+  .btn:disabled{opacity:.5;cursor:not-allowed;}
+  .btn-ghost{background:#fff;color:var(--blue-700);border:1px solid var(--slate-200);}
+  .row{display:flex;gap:10px;align-items:center;margin-top:20px;flex-wrap:wrap;}
+  .consent{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--slate-600);margin-top:16px;}
+  .consent input{margin-top:3px;width:18px;height:18px;flex-shrink:0;}
+  .privacy{background:var(--blue-50);border-left:3px solid var(--blue-500);border-radius:8px;padding:14px 16px;font-size:13px;color:var(--slate-700);margin:16px 0;}
+  .privacy strong{color:var(--slate-900);}
+  .rec-task{text-align:center;padding:20px 0;}
+  .rec-prompt{font-size:16px;color:var(--slate-700);margin-bottom:18px;min-height:48px;}
+  .rec-pill{display:inline-flex;align-items:center;gap:8px;background:var(--slate-100);color:var(--slate-600);padding:6px 14px;border-radius:999px;font-size:13px;font-weight:600;}
+  .rec-dot{width:9px;height:9px;border-radius:50%;background:var(--slate-300);}
+  .rec-dot.live{background:var(--red-600);animation:pulse 1s infinite;}
+  @keyframes pulse{50%{opacity:.3;}}
+  .dots{display:flex;justify-content:center;gap:7px;margin-top:20px;}
+  .dot{width:8px;height:8px;border-radius:4px;background:var(--slate-300);}
+  .dot.active{background:var(--blue-600);width:22px;}
+  .dot.done{background:var(--green-600);}
+  .progress{font-size:13px;color:var(--slate-400);text-align:center;margin-top:28px;}
+  .big-check{font-size:46px;text-align:center;margin-bottom:10px;}
+  .err{color:var(--red-600);font-size:14px;margin-top:10px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="logo">Avlynor · Tether Research</div>
+  <h1>Help teach Tether's ear</h1>
+  <p class="sub">90 seconds of your voice + a short health check. Every contribution directly trains the voice biomarkers that catch patient deterioration early. Anonymous, and your audio is never stored.</p>
+
+  <!-- STEP 0: consent -->
+  <div class="card step active" id="step-consent">
+    <h2>Before you start</h2>
+    <p>You'll record three short voice clips (hold "ahhh", read one sentence, say how you feel) and answer a few quick health questions.</p>
+    <div class="privacy">
+      <strong>Your privacy.</strong> Your raw audio is <strong>never stored or sent anywhere it's kept</strong> — the engine extracts anonymous acoustic measurements (pitch stability, breathiness, etc.) and immediately discards the recording. We keep only those numbers + your survey answers + age/sex/language, with no name, email, or identifier. Because it's fully anonymous it can't be traced back or withdrawn after submission.
+    </div>
+    <label class="consent"><input type="checkbox" id="consent-box" />
+      I'm 18+, I consent to my anonymous voice measurements and survey answers being used to improve Tether's research models.</label>
+    <div class="row"><button class="btn" id="consent-next" disabled>Start →</button></div>
+  </div>
+
+  <!-- STEP 1: demographics -->
+  <div class="card step" id="step-demo">
+    <h2>About you</h2>
+    <p class="sub" style="margin-bottom:6px">Used only to remove age/sex/language bias from the models.</p>
+    <label for="age">Age</label>
+    <input type="number" id="age" min="18" max="120" placeholder="e.g. 34" />
+    <label for="gender">Sex</label>
+    <select id="gender"><option value="">Prefer not to say</option><option>Female</option><option>Male</option><option>Other</option></select>
+    <label for="language">First language</label>
+    <input type="text" id="language" placeholder="e.g. English" />
+    <div class="row"><button class="btn-ghost btn" data-back>← Back</button><button class="btn" id="demo-next">Next →</button></div>
+  </div>
+
+  <!-- STEP 2: recording -->
+  <div class="card step" id="step-record">
+    <h2>Record your voice</h2>
+    <div class="rec-task">
+      <div class="rec-prompt" id="rec-prompt">Tap start, then follow the prompt.</div>
+      <span class="rec-pill"><span class="rec-dot" id="rec-dot"></span><span id="rec-state">Ready</span></span>
+    </div>
+    <div class="row" style="justify-content:center"><button class="btn" id="rec-start">Start recording</button></div>
+    <div class="dots" id="rec-dots"></div>
+    <div class="err" id="rec-err"></div>
+  </div>
+
+  <!-- STEP 3: survey -->
+  <div class="card step" id="step-survey">
+    <h2>How are you today?</h2>
+    <p class="sub" style="margin-bottom:18px">Honest answers make the model accurate. ~30 seconds.</p>
+    <div id="survey-body"></div>
+    <div class="row"><button class="btn" id="survey-submit">Submit contribution →</button></div>
+    <div class="err" id="survey-err"></div>
+  </div>
+
+  <!-- STEP 4: done -->
+  <div class="card step" id="step-done">
+    <div class="big-check">✓</div>
+    <h2 style="text-align:center">Thank you.</h2>
+    <p style="text-align:center" id="done-msg">Your contribution was recorded. You just made Tether a little more accurate.</p>
+    <div class="row" style="justify-content:center"><a class="btn" href="/">Back to Avlynor</a></div>
+  </div>
+
+  <div class="progress" id="progress"></div>
+</div>
+
+<script>
+const ENGINE = "https://biomarker.avlynor.com";
+const state = { stepIdx: 0, recordings: [], recording_types: [], survey: {}, demo: {} };
+const STEP_IDS = ["step-consent","step-demo","step-record","step-survey","step-done"];
+
+function show(idx){
+  state.stepIdx = idx;
+  STEP_IDS.forEach((id,i)=>document.getElementById(id).classList.toggle("active", i===idx));
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+document.querySelectorAll("[data-back]").forEach(b=>b.addEventListener("click",()=>show(state.stepIdx-1)));
+
+// consent
+const cbox=document.getElementById("consent-box"), cnext=document.getElementById("consent-next");
+cbox.addEventListener("change",()=>cnext.disabled=!cbox.checked);
+cnext.addEventListener("click",()=>show(1));
+
+// demographics
+document.getElementById("demo-next").addEventListener("click",()=>{
+  state.demo={ age:Number(document.getElementById("age").value)||null,
+               gender:document.getElementById("gender").value||null,
+               language:document.getElementById("language").value.trim()||null };
+  show(2);
+});
+
+// ---- recording (16 kHz PCM, same proven path as the engine demo) ----
+async function recordClip(seconds){
+  const stream=await navigator.mediaDevices.getUserMedia({audio:true});
+  const ac=new (window.AudioContext||window.webkitAudioContext)({sampleRate:16000});
+  const src=ac.createMediaStreamSource(stream), proc=ac.createScriptProcessor(4096,1,1);
+  const chunks=[]; src.connect(proc); proc.connect(ac.destination);
+  proc.onaudioprocess=e=>chunks.push(new Float32Array(e.inputBuffer.getChannelData(0)));
+  await new Promise(r=>setTimeout(r,seconds*1000));
+  proc.disconnect(); src.disconnect(); stream.getTracks().forEach(t=>t.stop());
+  const total=chunks.reduce((a,c)=>a+c.length,0), merged=new Float32Array(total);
+  let off=0; for(const c of chunks){merged.set(c,off);off+=c.length;}
+  const i16=new Int16Array(merged.length);
+  for(let i=0;i<merged.length;i++){const s=Math.max(-1,Math.min(1,merged[i]));i16[i]=s<0?s*32768:s*32767;}
+  ac.close(); return Array.from(i16);
+}
+const REC_TASKS=[
+  {key:"sustained_vowel",dur:6,prompt:"Hold a steady “ahhhh” for 5 seconds — same pitch and volume throughout."},
+  {key:"reading",dur:8,prompt:"Read aloud, normal voice: “When the sunlight strikes raindrops in the air, they act as a prism and form a rainbow.”"},
+  {key:"free_speech",dur:10,prompt:"In your own words, say how you're feeling today — about 10 seconds."},
+];
+function renderRecDots(done){
+  document.getElementById("rec-dots").innerHTML=REC_TASKS.map((_,i)=>
+    `<span class="dot ${i<done?'done':i===done?'active':''}"></span>`).join("");
+}
+renderRecDots(0);
+document.getElementById("rec-start").addEventListener("click",async()=>{
+  const btn=document.getElementById("rec-start"), dot=document.getElementById("rec-dot");
+  const stateEl=document.getElementById("rec-state"), prompt=document.getElementById("rec-prompt");
+  const err=document.getElementById("rec-err"); err.textContent="";
+  btn.disabled=true;
+  try{
+    for(let i=0;i<REC_TASKS.length;i++){
+      const t=REC_TASKS[i];
+      prompt.textContent=t.prompt; renderRecDots(i);
+      stateEl.textContent="Get ready…"; await new Promise(r=>setTimeout(r,1800));
+      dot.classList.add("live"); stateEl.textContent=`Recording ${t.dur}s…`;
+      const clip=await recordClip(t.dur);
+      dot.classList.remove("live"); stateEl.textContent="Saved ✓";
+      state.recordings.push(clip); state.recording_types.push(t.key);
+      await new Promise(r=>setTimeout(r,500));
+    }
+    renderRecDots(REC_TASKS.length);
+    buildSurvey(); show(3);
+  }catch(e){
+    err.textContent="Microphone error: "+(e&&e.message||e)+". Check browser mic permissions and try again.";
+    btn.disabled=false; dot.classList.remove("live"); stateEl.textContent="Ready";
+  }
+});
+
+// ---- survey (validated short battery) ----
+const SCALES=[
+  {key:"fatigue_0_10",label:"How tired do you feel right now?",low:"Full of energy",high:"Exhausted"},
+  {key:"sleep_quality_0_10",label:"How well did you sleep last night?",low:"Terribly",high:"Great"},
+  {key:"cognitive_0_10",label:"How foggy is your thinking today?",low:"Sharp",high:"Very foggy"},
+  {key:"mood_0_10",label:"How is your mood today?",low:"Very low",high:"Great"},
+];
+// PHQ-2 (validated 2-item depression screen, scored 0–6).
+const PHQ2=[
+  "Little interest or pleasure in doing things",
+  "Feeling down, depressed, or hopeless",
+];
+const PHQ_OPTS=["Not at all","Several days","More than half the days","Nearly every day"];
+function buildSurvey(){
+  const body=document.getElementById("survey-body"); let html="";
+  for(const s of SCALES){
+    html+=`<div class="q"><div class="qt">${s.label}</div><div class="scale" data-scale="${s.key}">`+
+      Array.from({length:11},(_, n)=>`<button data-v="${n}">${n}</button>`).join("")+
+      `</div><div class="ends"><span>${s.low}</span><span>${s.high}</span></div></div>`;
+  }
+  html+=`<div class="q"><div class="qt">Over the last 2 weeks, how often have you been bothered by…</div>`;
+  PHQ2.forEach((q,qi)=>{
+    html+=`<div style="margin:10px 0"><div style="font-size:13px;color:var(--slate-600);margin-bottom:6px">${q}</div>`+
+      `<div class="opts" data-phq="${qi}">`+PHQ_OPTS.map((o,oi)=>`<button data-v="${oi}">${o}</button>`).join("")+`</div></div>`;
+  });
+  html+=`</div>`;
+  html+=`<div class="q"><div class="qt">Are you feeling unwell today (cold, cough, sore throat, breathless)?</div>`+
+    `<div class="opts" data-unwell><button data-v="0">No</button><button data-v="1">Yes</button></div></div>`;
+  body.innerHTML=html;
+  body.querySelectorAll(".scale").forEach(row=>{
+    row.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{
+      row.querySelectorAll("button").forEach(x=>x.classList.remove("on")); b.classList.add("on");
+      state.survey[row.dataset.scale]=Number(b.dataset.v);
+    }));
+  });
+  body.querySelectorAll(".opts[data-phq]").forEach(row=>{
+    row.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{
+      row.querySelectorAll("button").forEach(x=>x.classList.remove("on")); b.classList.add("on");
+      state.survey["_phq"+row.dataset.phq]=Number(b.dataset.v);
+    }));
+  });
+  const uw=body.querySelector(".opts[data-unwell]");
+  uw.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{
+    uw.querySelectorAll("button").forEach(x=>x.classList.remove("on")); b.classList.add("on");
+    state.survey.unwell_today=Number(b.dataset.v);
+  }));
+}
+
+document.getElementById("survey-submit").addEventListener("click",async()=>{
+  const btn=document.getElementById("survey-submit"), err=document.getElementById("survey-err");
+  err.textContent="";
+  // assemble PHQ-2 total if both answered
+  if(state.survey._phq0!=null && state.survey._phq1!=null){
+    state.survey.phq2=state.survey._phq0+state.survey._phq1;
+  }
+  delete state.survey._phq0; delete state.survey._phq1;
+  btn.disabled=true; btn.textContent="Submitting…";
+  try{
+    const res=await fetch(ENGINE+"/contribute",{
+      method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({
+        recordings:state.recordings, recording_types:state.recording_types, sampleRate:16000,
+        survey:state.survey, age:state.demo.age, gender:state.demo.gender,
+        language:state.demo.language, consent:true,
+      }),
+    });
+    const d=await res.json();
+    if(!res.ok) throw new Error((d&&d.detail&&d.detail.message)||(d&&d.detail)||"Submission failed");
+    if(d.total_contributions){
+      document.getElementById("done-msg").textContent=
+        `Your contribution was recorded — you're #${d.total_contributions}. You just made Tether a little more accurate.`;
+    }
+    show(4);
+  }catch(e){
+    err.textContent="Could not submit: "+(e&&e.message||e); btn.disabled=false; btn.textContent="Submit contribution →";
+  }
+});
+
+// live contribution count in the footer
+fetch(ENGINE+"/contribute/stats").then(r=>r.json()).then(d=>{
+  if(d&&typeof d.contributions==="number")
+    document.getElementById("progress").textContent=`${d.contributions} contributions so far — thank you.`;
+}).catch(()=>{});
+</script>
+</body>
+</html>
