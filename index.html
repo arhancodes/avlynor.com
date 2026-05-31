@@ -172,34 +172,48 @@
     padding-bottom: 100px;
     overflow: hidden;
   }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 5fr 6fr;
+    gap: 72px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  @media (max-width: 1100px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 56px; }
+  }
+
   .hero-eyebrow {
     font-family: 'Cinzel', serif;
     font-size: 13px;
     letter-spacing: 0.3em;
     color: var(--gold);
-    margin-bottom: 32px;
+    margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-size: clamp(64px, 8vw, 128px);
   }
   .hero-tag {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: clamp(20px, 2.4vw, 28px);
+    font-size: clamp(20px, 2.2vw, 26px);
     color: var(--gold);
-    margin-top: 24px;
+    margin-top: 20px;
     margin-bottom: 12px;
   }
   .hero-sub {
-    font-size: clamp(15px, 1.6vw, 18px);
+    font-size: clamp(15px, 1.4vw, 17px);
     color: var(--cream);
-    max-width: 720px;
-    margin-bottom: 56px;
+    max-width: 56ch;
+    margin-bottom: 40px;
   }
 
   .hero-numbers {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-bottom: 56px;
-    max-width: 880px;
+    gap: 18px;
+    margin-bottom: 40px;
   }
   @media (max-width: 800px) {
     .hero-numbers { grid-template-columns: 1fr; gap: 16px; }
@@ -214,7 +228,7 @@
        lining + tabular figures is clean and confident. */
     font-family: 'Inter', sans-serif;
     font-weight: 300;
-    font-size: clamp(56px, 7vw, 96px);
+    font-size: clamp(36px, 4.6vw, 60px);
     color: var(--gold);
     line-height: 1;
     letter-spacing: -0.04em;
@@ -265,10 +279,276 @@
     background: rgba(212, 181, 114, 0.08);
   }
 
+  /* -----------------------------------------------------------------
+     Biomarker report preview — hero right column
+  ----------------------------------------------------------------- */
+  .hero-preview {
+    position: relative;
+    perspective: 1400px;
+  }
+  .report-card {
+    position: relative;
+    background: linear-gradient(160deg, rgba(17, 30, 58, 0.92), rgba(11, 20, 42, 0.92));
+    border: 1px solid var(--line-strong);
+    border-radius: 14px;
+    padding: 28px 30px 26px;
+    box-shadow:
+      0 0 80px -20px rgba(212, 181, 114, 0.22),
+      0 30px 70px -25px rgba(0, 0, 0, 0.7),
+      inset 0 1px 0 rgba(232, 204, 133, 0.10);
+    backdrop-filter: blur(8px);
+    transform: rotate(0.5deg);
+    transition: transform 0.5s ease;
+  }
+  .report-card:hover { transform: rotate(0deg) translateY(-2px); }
+  .report-card::before {
+    content: ""; position: absolute; top: 0; left: 12%; right: 12%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.7;
+  }
+
+  .report-head {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 24px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+  }
+  .report-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+  .report-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    color: var(--cream);
+    font-size: 22px;
+    line-height: 1.1;
+  }
+  .report-meta {
+    text-align: right;
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    line-height: 1.55;
+    font-family: 'Inter', sans-serif;
+  }
+  .report-meta strong {
+    color: var(--cream);
+    font-weight: 500;
+  }
+
+  .score-row {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 22px;
+    align-items: center;
+    margin-bottom: 22px;
+  }
+  .score-ring {
+    position: relative;
+    width: 116px; height: 116px;
+    flex-shrink: 0;
+  }
+  .score-ring svg {
+    width: 100%; height: 100%;
+    transform: rotate(-90deg);
+  }
+  .score-ring circle.track {
+    fill: none;
+    stroke: rgba(212, 181, 114, 0.14);
+    stroke-width: 6;
+  }
+  .score-ring circle.value {
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-dasharray: 339.292;       /* 2*pi*54 */
+    stroke-dashoffset: 54.286;       /* 16% remaining → 84/100 */
+    filter: drop-shadow(0 0 6px rgba(212, 181, 114, 0.55));
+  }
+  .score-center {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+  }
+  .score-num {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 42px;
+    line-height: 1;
+    color: var(--gold);
+    letter-spacing: -0.04em;
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+  .score-denom {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+  .score-side {
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .score-label {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    color: var(--muted);
+  }
+  .score-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    color: var(--cream);
+    line-height: 1;
+  }
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    background: rgba(47, 158, 126, 0.16);
+    color: #6fcfac;
+    border: 1px solid rgba(47, 158, 126, 0.4);
+    width: fit-content;
+  }
+  .status-pill::before {
+    content: ""; width: 6px; height: 6px; border-radius: 50%;
+    background: #6fcfac;
+    box-shadow: 0 0 6px #6fcfac;
+  }
+
+  /* 7-day trend mini chart */
+  .trend {
+    background: rgba(7, 13, 27, 0.55);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 14px 16px 10px;
+    margin-bottom: 18px;
+  }
+  .trend-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 6px;
+  }
+  .trend-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--muted);
+  }
+  .trend-now {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--cream);
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+  .trend-now .delta {
+    color: #6fcfac;
+    font-size: 11px;
+    margin-left: 6px;
+  }
+  .trend svg { display: block; width: 100%; height: 56px; }
+
+  /* Biomarker rows */
+  .bio-rows {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 24px;
+    margin-bottom: 22px;
+  }
+  .bio-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 12px;
+  }
+  .bio-row:nth-last-child(-n+2) { border-bottom: none; }
+  .bio-name { color: var(--muted); letter-spacing: 0.06em; font-family: 'Inter', sans-serif; }
+  .bio-value {
+    color: var(--cream);
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+  .bio-value .ok { color: #6fcfac; margin-left: 4px; font-size: 10px; }
+
+  .verdict {
+    background: linear-gradient(90deg, rgba(212, 181, 114, 0.12), rgba(212, 181, 114, 0.02));
+    border-left: 2px solid var(--gold);
+    padding: 12px 16px;
+    border-radius: 4px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--cream);
+    line-height: 1.4;
+  }
+  .verdict strong {
+    color: var(--gold);
+    font-style: normal;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    display: block;
+    margin-bottom: 2px;
+    font-weight: 500;
+  }
+
+  /* Stacked small "preview" cards behind the main one */
+  .stacked-mini {
+    position: absolute;
+    background: linear-gradient(160deg, rgba(11, 20, 42, 0.85), rgba(7, 13, 27, 0.9));
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 16px;
+    box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(6px);
+    z-index: -1;
+  }
+  .stacked-mini.left {
+    left: -40px; top: 40px;
+    width: 200px;
+    transform: rotate(-4deg);
+  }
+  .stacked-mini.right {
+    right: -36px; bottom: -28px;
+    width: 220px;
+    transform: rotate(3deg);
+  }
+  @media (max-width: 700px) {
+    .stacked-mini { display: none; }
+  }
+  .mini-row {
+    display: flex; justify-content: space-between;
+    font-size: 11px;
+    color: var(--muted);
+    padding: 4px 0;
+    font-family: 'Inter', sans-serif;
+  }
+  .mini-row strong { color: var(--gold); font-weight: 500; }
+  .mini-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
   /* Animated waveform — SVG, draws on load */
   .waveform {
     width: 100%;
-    height: 120px;
+    height: 80px;
     margin-bottom: 24px;
     opacity: 0.85;
   }
@@ -711,36 +991,150 @@
   <div class="deco-circle large" aria-hidden="true"></div>
   <div class="deco-circle small" aria-hidden="true"></div>
 
-  <div class="hero-eyebrow">AVLYNOR · FLAGSHIP PRODUCT</div>
-  <h1>TETHER</h1>
-  <div class="hero-tag"><span class="accent-bar"></span>One check-in. One guardian. Zero friction.</div>
-  <p class="hero-sub">A clinical companion app for post-discharge patients, with a passive voice biomarker platform that detects deterioration <strong>48 hours before any symptom</strong>.</p>
+  <div class="hero-grid">
+    <!-- LEFT: copy + CTAs -->
+    <div class="hero-content">
+      <div class="hero-eyebrow">AVLYNOR · FLAGSHIP PRODUCT</div>
+      <h1>TETHER</h1>
+      <div class="hero-tag"><span class="accent-bar"></span>One check-in. One guardian. Zero friction.</div>
+      <p class="hero-sub">A clinical companion app for post-discharge patients, with a passive voice biomarker platform that detects deterioration <strong>48 hours before any symptom</strong>.</p>
 
-  <!-- The three headline numbers from Nitya's brief -->
-  <div class="hero-numbers">
-    <div class="stat reveal">
-      <div class="n">48h</div>
-      <div class="l">earlier than symptoms</div>
-    </div>
-    <div class="stat reveal">
-      <div class="n">30×</div>
-      <div class="l">return on spend</div>
-    </div>
-    <div class="stat reveal">
-      <div class="n">15s</div>
-      <div class="l">of daily speech</div>
-    </div>
-  </div>
+      <div class="hero-numbers">
+        <div class="stat reveal">
+          <div class="n">48h</div>
+          <div class="l">earlier than symptoms</div>
+        </div>
+        <div class="stat reveal">
+          <div class="n">30×</div>
+          <div class="l">return on spend</div>
+        </div>
+        <div class="stat reveal">
+          <div class="n">15s</div>
+          <div class="l">of daily speech</div>
+        </div>
+      </div>
 
-  <!-- Animated waveform — draws on load -->
-  <svg class="waveform" viewBox="0 0 1200 120" preserveAspectRatio="none">
-    <path class="echo" d="M0,60 Q40,40 80,60 T160,60 T240,60 T320,60 T400,60 Q440,5 480,60 T560,60 T640,60 Q680,90 720,60 T800,60 T880,60 Q920,30 960,60 T1040,60 T1120,60 T1200,60" />
-    <path d="M0,60 Q30,50 60,60 T120,60 Q160,15 200,60 T280,60 Q310,85 340,60 T420,60 T500,60 Q540,10 580,60 T660,60 Q700,85 740,60 T820,60 T900,60 Q940,20 980,60 T1060,60 T1140,60 T1200,60" />
-  </svg>
+      <div class="hero-ctas">
+        <a class="btn btn-gold" href="https://biomarker.avlynor.com" target="_blank" rel="noopener">Try the live engine →</a>
+        <a class="btn btn-ghost" href="#cta">Talk to us</a>
+      </div>
+    </div>
 
-  <div class="hero-ctas">
-    <a class="btn btn-gold" href="https://biomarker.avlynor.com" target="_blank" rel="noopener">Try the live engine →</a>
-    <a class="btn btn-ghost" href="#cta">Talk to us</a>
+    <!-- RIGHT: biomarker report preview -->
+    <div class="hero-preview reveal">
+
+      <!-- Small left-stack: nurse alert card behind -->
+      <div class="stacked-mini left" aria-hidden="true">
+        <div class="mini-label">Nurse navigator</div>
+        <div class="mini-row"><span>Bed 304 · Lindgren</span><strong>STABLE</strong></div>
+        <div class="mini-row"><span>Bed 312 · Eriksson</span><strong style="color:#e8a259">MONITOR</strong></div>
+        <div class="mini-row"><span>Bed 318 · Andersson</span><strong>STABLE</strong></div>
+        <div class="mini-row"><span>Bed 322 · Holm</span><strong>STABLE</strong></div>
+      </div>
+
+      <!-- Main: biomarker report card -->
+      <div class="report-card">
+        <div class="report-head">
+          <div>
+            <div class="report-eyebrow">RECOVERY REPORT · DAY 6</div>
+            <div class="report-title">Margareta L., 68</div>
+          </div>
+          <div class="report-meta">
+            Session <strong>14/30</strong><br/>
+            08:14 · Today
+          </div>
+        </div>
+
+        <div class="score-row">
+          <div class="score-ring">
+            <svg viewBox="0 0 120 120">
+              <circle class="track" cx="60" cy="60" r="54"/>
+              <circle class="value" cx="60" cy="60" r="54"/>
+            </svg>
+            <div class="score-center">
+              <div class="score-num">84</div>
+              <div class="score-denom">/ 100</div>
+            </div>
+          </div>
+          <div class="score-side">
+            <div class="score-label">HEALTHY VOICE INDEX</div>
+            <div class="score-name">Recovering normally</div>
+            <span class="status-pill">Stable</span>
+          </div>
+        </div>
+
+        <!-- 7-day jitter trend with clinical threshold -->
+        <div class="trend">
+          <div class="trend-head">
+            <span class="trend-label">JITTER · 7-DAY TREND</span>
+            <span class="trend-now">0.62%<span class="delta">−0.08</span></span>
+          </div>
+          <svg viewBox="0 0 280 56" preserveAspectRatio="none">
+            <!-- clinical threshold line at 1.04% (mapped to y=14) -->
+            <line x1="0" y1="14" x2="280" y2="14" stroke="rgba(192, 65, 62, 0.6)" stroke-width="0.7" stroke-dasharray="3 3"/>
+            <text x="276" y="11" text-anchor="end" font-family="Inter, sans-serif" font-size="7" fill="rgba(232, 162, 138, 0.7)" letter-spacing="0.5">1.04% threshold</text>
+            <!-- trend area fill -->
+            <path d="M0,40 L40,34 L80,38 L120,30 L160,32 L200,28 L240,30 L280,26 L280,56 L0,56 Z"
+                  fill="rgba(212, 181, 114, 0.10)"/>
+            <!-- trend line -->
+            <path d="M0,40 L40,34 L80,38 L120,30 L160,32 L200,28 L240,30 L280,26"
+                  fill="none" stroke="#D4B572" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"
+                  filter="drop-shadow(0 0 3px rgba(212, 181, 114, 0.6))"/>
+            <!-- dots on every day -->
+            <circle cx="0" cy="40" r="1.8" fill="#D4B572"/>
+            <circle cx="40" cy="34" r="1.8" fill="#D4B572"/>
+            <circle cx="80" cy="38" r="1.8" fill="#D4B572"/>
+            <circle cx="120" cy="30" r="1.8" fill="#D4B572"/>
+            <circle cx="160" cy="32" r="1.8" fill="#D4B572"/>
+            <circle cx="200" cy="28" r="1.8" fill="#D4B572"/>
+            <circle cx="240" cy="30" r="1.8" fill="#D4B572"/>
+            <circle cx="280" cy="26" r="2.4" fill="#E8CC85" stroke="#D4B572" stroke-width="1"/>
+          </svg>
+        </div>
+
+        <div class="bio-rows">
+          <div class="bio-row">
+            <span class="bio-name">Jitter</span>
+            <span class="bio-value">0.62%<span class="ok">✓</span></span>
+          </div>
+          <div class="bio-row">
+            <span class="bio-name">Shimmer</span>
+            <span class="bio-value">3.1%<span class="ok">✓</span></span>
+          </div>
+          <div class="bio-row">
+            <span class="bio-name">HNR</span>
+            <span class="bio-value">21.4 dB<span class="ok">✓</span></span>
+          </div>
+          <div class="bio-row">
+            <span class="bio-name">Speech rate</span>
+            <span class="bio-value">4.2 syll/s<span class="ok">✓</span></span>
+          </div>
+          <div class="bio-row">
+            <span class="bio-name">CPPS</span>
+            <span class="bio-value">14.8 dB<span class="ok">✓</span></span>
+          </div>
+          <div class="bio-row">
+            <span class="bio-name">F0 stability</span>
+            <span class="bio-value">192 Hz<span class="ok">✓</span></span>
+          </div>
+        </div>
+
+        <div class="verdict">
+          <strong>SENTINEL VERDICT</strong>
+          Within normal range. No nurse action required. Next check-in scheduled for tomorrow 08:00.
+        </div>
+      </div>
+
+      <!-- Small right-stack: patient app card behind -->
+      <div class="stacked-mini right" aria-hidden="true">
+        <div class="mini-label">Patient app · today</div>
+        <div class="mini-row"><span>Morning check-in</span><strong>15s ✓</strong></div>
+        <div class="mini-row"><span>Recovery score</span><strong>84</strong></div>
+        <div class="mini-row"><span>Medication taken</span><strong>2 / 3</strong></div>
+        <div class="mini-row"><span>Days since surgery</span><strong>6</strong></div>
+      </div>
+
+    </div>
   </div>
 </section>
 
