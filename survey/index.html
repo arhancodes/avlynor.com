@@ -77,6 +77,8 @@
   <h1>Help teach Tether's ear</h1>
   <p class="sub">About 5 minutes: a few short voice clips, a quick reaction-time tap test, and a health survey. Every contribution directly trains the voice biomarkers that catch deterioration early. Anonymous — recordings stored securely, used only for research.</p>
 
+  <div id="progress-wrap" style="height:6px;background:#e2e8f0;border-radius:99px;margin:0 0 18px;overflow:hidden"><div id="progress" style="height:100%;width:0%;background:#2563eb;transition:width .35s ease"></div></div>
+
   <!-- STEP 0: consent -->
   <div class="card step active" id="step-consent">
     <h2>Before you start</h2>
@@ -148,6 +150,14 @@
     <div class="big-check">✓</div>
     <h2 style="text-align:center">Thank you.</h2>
     <p style="text-align:center" id="done-msg">Your contribution was recorded. You just made Tether a little more accurate.</p>
+    <div style="text-align:center;margin-top:14px">
+      <p class="legend" style="margin-bottom:8px">Know someone who'd give 5 minutes? Each share trains the model further.</p>
+      <div class="row" style="justify-content:center;gap:8px;flex-wrap:wrap">
+        <button class="btn-ghost btn" id="share-copy" type="button">Copy link</button>
+        <a class="btn-ghost btn" id="share-wa" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn-ghost btn" id="share-x" target="_blank" rel="noopener">Share on X</a>
+      </div>
+    </div>
     <div class="row" style="justify-content:center"><a class="btn" href="/">Back to Avlynor</a></div>
   </div>
 </div>
@@ -161,9 +171,18 @@ const sleep = ms => new Promise(r=>setTimeout(r,ms));
 function show(idx){
   state.stepIdx = idx;
   STEP_IDS.forEach((id,i)=>document.getElementById(id).classList.toggle("active", i===idx));
+  const pb=document.getElementById("progress"); if(pb) pb.style.width=Math.round((idx/(STEP_IDS.length-1))*100)+"%";
   window.scrollTo({top:0,behavior:"smooth"});
 }
 document.querySelectorAll("[data-back]").forEach(b=>b.addEventListener("click",()=>show(state.stepIdx-1)));
+// share on completion (organic growth)
+(function(){
+  const url="https://avlynor.com/survey", msg="I just spent 5 min helping train Tether's voice-health AI — add yours:";
+  const wa=document.getElementById("share-wa"), x=document.getElementById("share-x"), cp=document.getElementById("share-copy");
+  if(wa) wa.href="https://wa.me/?text="+encodeURIComponent(msg+" "+url);
+  if(x) x.href="https://twitter.com/intent/tweet?text="+encodeURIComponent(msg)+"&url="+encodeURIComponent(url);
+  if(cp) cp.addEventListener("click",async()=>{try{await navigator.clipboard.writeText(url);cp.textContent="Copied ✓";setTimeout(()=>cp.textContent="Copy link",1500);}catch(e){}});
+})();
 
 // consent
 const cbox=document.getElementById("consent-box"), cnext=document.getElementById("consent-next");
