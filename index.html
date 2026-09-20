@@ -248,6 +248,17 @@
   p { color: var(--cream); font-size: 16px; max-width: 70ch; }
   p.muted { color: var(--muted); }
 
+  /* Promo video (added 2026-09-20) */
+  .video-section { padding-top: 96px; padding-bottom: 0; }
+  .video-section .video-sub { color: var(--muted); font-size: 18px; max-width: 60ch; }
+  .video-frame {
+    margin-top: 36px; border-radius: 20px; overflow: hidden;
+    border: 1px solid var(--line); box-shadow: var(--shadow-gold);
+    background: var(--bg-1); aspect-ratio: 16 / 9;
+  }
+  .video-frame video { width: 100%; height: 100%; display: block; background: var(--bg-1); }
+  @media (max-width: 800px) { .video-section { padding-top: 64px; } .video-frame { border-radius: 14px; margin-top: 24px; } }
+
   .accent-bar {
     display: inline-block; width: 2px; height: 1em; background: var(--gold);
     margin-right: 18px; vertical-align: middle;
@@ -1391,6 +1402,20 @@
     <span class="marquee-item">No hardware required</span>
   </div>
 </div>
+
+<!-- ============================================================== -->
+<!-- PROMO VIDEO -->
+<!-- ============================================================== -->
+<section id="video" class="video-section">
+  <h2 class="reveal">Tether in 37 seconds</h2>
+  <p class="reveal video-sub">From the patient's phone to the nurse's list. The screens are the live prototype, not mockups.</p>
+  <div class="video-frame reveal">
+    <video controls playsinline preload="none" poster="./assets/tether-promo-poster.jpg" aria-label="Tether overview video, 37 seconds">
+      <source src="./assets/tether-promo.mp4" type="video/mp4" />
+      Your browser can't play this video. <a href="./assets/tether-promo.mp4">Download it</a> instead.
+    </video>
+  </div>
+</section>
 
 <!-- ============================================================== -->
 <!-- THE 72-HOUR BLACK HOLE -->
