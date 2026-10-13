@@ -1702,7 +1702,8 @@
   <div class="signup-grid">
     <div class="signup-copy reveal">
       <p>Tether is not open to the public yet. It reaches patients through the hospital or clinic that discharges them.</p>
-      <p>If you have been in hospital, or you look after someone who has, leave your email and we will tell you when Tether is available where you live.</p>
+      <p>If you have been in hospital, look after someone who has, or work in care yourself, leave your email and we will tell you when Tether is available where you live.</p>
+      <p>Medical staff who want to try Tether with their own patients can use the <a href="#cta">form for care teams</a> further down.</p>
       <p>We only need an email address. Please do not send us any health information.</p>
     </div>
     <form class="signup-card reveal" onsubmit="submitInterest(event)" data-done="Thank you. You are on the waitlist. We will email you when Tether is available near you.">
@@ -1711,6 +1712,7 @@
         <div class="f-choices">
           <label><input type="radio" name="kind" value="patient_waitlist" required checked /> A patient</label>
           <label><input type="radio" name="kind" value="caregiver_waitlist" required /> A family member or carer</label>
+          <label><input type="radio" name="kind" value="staff_waitlist" required /> A doctor, nurse or other medical staff</label>
         </div>
       </fieldset>
       <div class="f-row">
@@ -1722,6 +1724,10 @@
           <label for="wlCountry">Country <span class="opt">(optional)</span></label>
           <input id="wlCountry" name="country" type="text" maxlength="80" autocomplete="country-name" />
         </div>
+      </div>
+      <div class="f-field" id="wlWorkField" hidden>
+        <label for="wlWork">Where you work <span class="opt">(optional)</span></label>
+        <input id="wlWork" name="organisation" type="text" maxlength="160" autocomplete="organization" placeholder="e.g. Example Hospital, cardiology" />
       </div>
       <div class="f-field">
         <label for="wlEmail">Email</label>
@@ -1892,6 +1898,21 @@
   const TETHER_API = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
     ? 'http://localhost:8787'
     : 'https://tether-api.arhan-harchandani.workers.dev';
+
+  // The workplace field is only for medical staff.
+  (function () {
+    const form = document.querySelector('#waitlist form');
+    const field = document.getElementById('wlWorkField');
+    if (!form || !field) return;
+    const sync = () => {
+      const staff = form.querySelector('input[name="kind"]:checked')?.value === 'staff_waitlist';
+      field.hidden = !staff;
+      if (!staff) field.querySelector('input').value = '';
+    };
+    form.addEventListener('change', sync);
+    form.addEventListener('reset', () => setTimeout(sync, 0));
+    sync();
+  })();
 
   async function submitInterest(e) {
     e.preventDefault();
