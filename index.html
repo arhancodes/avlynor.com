@@ -1407,7 +1407,6 @@
 
       <div class="hero-ctas">
         <a class="btn btn-gold" href="https://tether.avlynor.com" target="_blank" rel="noopener">Try the live demo →</a>
-        <a class="btn btn-ghost" href="https://biomarker.avlynor.com" target="_blank" rel="noopener">Research demo</a>
         <a class="btn btn-ghost" href="#cta">Talk to us</a>
       </div>
       <p style="margin:12px 0 0;font-size:0.9rem;opacity:0.72">No account needed — open the demo and tap <strong>Demo doctor</strong> or <strong>Demo patient</strong> to sign in.</p>
@@ -1423,7 +1422,7 @@
         <div class="bm-head">
           <div>
             <div class="bm-h1">Tether Biomarker Engine</div>
-            <div class="bm-sub">Patient p-1043 · Day 6 · <span class="bm-mono">vps-2.9.0</span></div>
+            <div class="bm-sub">Example patient · Day 6</div>
           </div>
           <div class="bm-statline">
             <span class="bm-pill bm-pill-normal">SIGNAL OK</span>
@@ -1432,7 +1431,7 @@
 
         <div class="bm-summary">
           <strong>Recovering normally.</strong>
-          Within clinical range across the 3-task voice protocol. No nurse action required.
+          Today's voice check-in looks like their usual self. No action needed.
         </div>
 
         <div class="bm-inner">
@@ -1448,27 +1447,7 @@
           </div>
         </div>
 
-        <div class="bm-inner">
-          <h2 class="bm-h2">Vocal biomarkers</h2>
-          <div class="bm-metric"><span class="bm-name">Jitter</span><span class="bm-val">0.62 %</span></div>
-          <div class="bm-metric"><span class="bm-name">Shimmer</span><span class="bm-val">3.10 %</span></div>
-          <div class="bm-metric"><span class="bm-name">HNR</span><span class="bm-val">21.4 dB</span></div>
-          <div class="bm-metric"><span class="bm-name">CPPS</span><span class="bm-val">14.8 dB</span></div>
-          <div class="bm-metric"><span class="bm-name">F0 mean</span><span class="bm-val">192 Hz</span></div>
-          <div class="bm-metric"><span class="bm-name">Speech rate</span><span class="bm-val">4.2 syll/s</span></div>
-        </div>
-
-        <div class="bm-inner">
-          <h2 class="bm-h2">Condition risk</h2>
-          <div class="bm-cond"><span class="bm-name">Respiratory infection</span><span class="bm-pill bm-pill-normal">NORMAL</span></div>
-          <div class="bm-cond"><span class="bm-name">Voice dysphonia</span><span class="bm-pill bm-pill-normal">NORMAL</span></div>
-          <div class="bm-cond"><span class="bm-name">Cardiovascular stress</span><span class="bm-pill bm-pill-monitor">MONITOR</span></div>
-          <div class="bm-cond"><span class="bm-name">Sleep-breathing</span><span class="bm-pill bm-pill-normal">NORMAL</span></div>
-        </div>
-
-        <div class="bm-foot">
-          <span class="bm-mono">POST /analyze</span> · sample 14/30 · 18.4 s
-        </div>
+        
       </div>
 
     </div>
@@ -1555,7 +1534,7 @@
     <div class="step reveal">
       <div class="step-num">01</div>
       <div class="step-title">Baseline calibration</div>
-      <div class="step-desc">A nurse records a 30-second voice fingerprint before the patient leaves the hospital. The baseline is calibrated to the patient's home noise environment, so every future reading is compared against the patient, not against a generic population.</div>
+      <div class="step-desc">Before the patient goes home, they record a short voice sample. Every later check-in is compared with their own voice, not with a population average.</div>
     </div>
     <div class="step reveal">
       <div class="step-num">02</div>
@@ -1564,13 +1543,13 @@
     </div>
     <div class="step reveal">
       <div class="step-num">03</div>
-      <div class="step-title">Raw audio never stored · Shredder Protocol</div>
-      <div class="step-desc">A Rust-WASM edge engine can analyse acoustic features entirely on-device; in the current build, clips are processed in memory on EU-resident infrastructure and immediately deleted after analysis. Raw audio is never stored — only derived measurements are retained. Privacy by design, not by promise.</div>
+      <div class="step-title">Your voice is never stored</div>
+      <div class="step-desc">The recording is analysed and deleted straight away. We keep the results, never the voice itself, and the data stays on servers in the EU.</div>
     </div>
     <div class="step reveal">
       <div class="step-num">04</div>
       <div class="step-title">Nurse Navigator dashboard</div>
-      <div class="step-desc">A Live Recovery Score per patient: green is stable, amber is monitor, red is call now. One nurse can monitor far more patients than traditional daily phone follow-up, because she only acts on the patients who actually need her.</div>
+      <div class="step-desc">Each patient gets a simple status: green is stable, amber is worth a look, red is call now. The nurse spends time on the patients who need it, not on routine calls to everyone.</div>
     </div>
     <div class="step reveal">
       <div class="step-num">05</div>
@@ -1592,11 +1571,11 @@
     </div>
     <div class="audience-card reveal">
       <h3>Nurses</h3>
-      <p>Act only when an alert fires. No routine call-arounds. No burnout admin. The dashboard tells you exactly which patient needs you, and why.</p>
+      <p>Act when an alert fires, instead of working through routine call-arounds. No burnout admin. The dashboard tells you exactly which patient needs you, and why.</p>
     </div>
     <div class="audience-card reveal">
       <h3>Hospitals</h3>
-      <p>Stop absorbing avoidable readmission costs. Free up beds. Comply with national post-discharge policy, measurably.</p>
+      <p>See at a glance which discharged patients need attention first, with no hardware to roll out.</p>
     </div>
   </div>
 </section>
@@ -1605,30 +1584,29 @@
 <!-- COMPETITOR COMPARISON -->
 <!-- ============================================================== -->
 <section id="moat">
-  <h2 class="reveal">Every competitor was<br/>built for the wrong continent</h2>
-  <p class="competitor-intro reveal">Most remote-monitoring platforms are cloud-heavy, English-only, hardware-dependent, and built for US private insurance. Tether is designed from the first line of code for Nordic public healthcare.</p>
+  <h2 class="reveal">Built for Nordic<br/>public healthcare</h2>
+  <p class="competitor-intro reveal">Many remote-monitoring tools need extra hardware and were built for other health systems. Tether runs on the phone the patient already has and is designed for Nordic public healthcare.</p>
 
   <table class="compare reveal">
     <thead>
       <tr>
         <th>Feature</th>
         <th>Tether</th>
-        <th>Typical RPM platforms</th>
       </tr>
     </thead>
     <tbody>
-      <tr><td>Raw audio never stored · only derived measurements retained</td><td>✓</td><td>✕</td></tr>
-      <tr><td>No hardware required</td><td>✓</td><td>✕</td></tr>
-      <tr><td>27-language support</td><td>✓</td><td>✕</td></tr>
-      <tr><td>Privacy by design · EU-resident patient data</td><td>✓</td><td>✕</td></tr>
-      <tr><td>Guardian NLP plain-language translation</td><td>✓</td><td>✕</td></tr>
+      <tr><td>Your voice is never stored, only the results</td><td>✓</td></tr>
+      <tr><td>No hardware required</td><td>✓</td></tr>
+      <tr><td>27-language support</td><td>✓</td></tr>
+      <tr><td>Privacy by design · EU-resident patient data</td><td>✓</td></tr>
+      <tr><td>Plain-language recovery plans</td><td>✓</td></tr>
       
       
-      <tr><td>Patient compared to their own baseline, not a population average</td><td>✓</td><td>✕</td></tr>
+      <tr><td>Patient compared to their own baseline, not a population average</td><td>✓</td></tr>
     </tbody>
   </table>
 
-  <p class="moat reveal">The moat is not a single feature. It is a stack of decisions that competitors cannot copy quickly.</p>
+  <p class="moat reveal">It is not a single feature. It is a set of choices made together, from the patient up.</p>
 </section>
 
 <!-- ============================================================== -->
@@ -1834,9 +1812,7 @@
     </div>
     <div>© 2026 Avlynor.</div>
     <div>
-      <a href="https://biomarker.avlynor.com" target="_blank" rel="noopener">biomarker.avlynor.com</a>
-      &nbsp;·&nbsp;
-      <a href="https://docs.avlynor.com" target="_blank" rel="noopener">technical docs</a>
+      <a href="#waitlist">Join the waitlist</a>
     </div>
   </div>
 </footer>
