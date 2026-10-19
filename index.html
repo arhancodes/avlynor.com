@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Avlynor · Tether · Daily check-ins after hospital discharge</title>
-<meta name="description" content="Tether is a phone-based daily check-in that tells care teams which discharged patients need attention today. Plain-language recovery plans for patients, one ranked list for nurses. Venture Cup 2026 regional finalist." />
+<title>Avlynor · Tether · One check-in. One guardian. Zero friction.</title>
+<meta name="description" content="Avlynor builds Tether, a clinical companion app for post-discharge patients — daily check-ins, plain-language recovery plans, and a research program investigating whether voice can provide an earlier signal of deterioration." />
 <link rel="icon" type="image/png" href="./assets/favicon.png" />
 <link rel="apple-touch-icon" href="./assets/favicon.png" />
 <!-- Custom fonts disabled — site uses system sans (matches docs.avlynor.com).
@@ -1241,7 +1241,6 @@
     letter-spacing: 0.18em;
     font-size: 14px;
   }
-
   /* -----------------------------------------------------------------
      Finalist pill, follow-up list preview, sign-up forms
   ----------------------------------------------------------------- */
@@ -1359,8 +1358,7 @@
     <li><a href="#problem">The problem</a></li>
     <li><a href="#how">How Tether works</a></li>
     <li><a href="#roi">Who it's for</a></li>
-    <li><a href="#moat">Why Tether</a></li>
-    <li><a href="#waitlist">Waitlist</a></li>
+    <li><a href="#moat">Why us</a></li>
     <li><a href="#team">Team</a></li>
   </ul>
   <div class="nav-right">
@@ -1387,20 +1385,19 @@
   <div class="hero-grid">
     <!-- LEFT: copy + CTAs -->
     <div class="hero-content">
-      <a class="finalist-pill" href="https://www.presscenter.se/pressrelease/venturecup/klart-de-har-40-bolagen-gar-till-regionfinal-i-venture-cup" target="_blank" rel="noopener"><span class="dot" aria-hidden="true"></span>Venture Cup 2026 · Regional finalist, Region Syd</a>
       <div class="hero-eyebrow">AVLYNOR · FLAGSHIP PRODUCT</div>
       <h1>TETHER</h1>
       <div class="hero-tag"><span class="accent-bar"></span>One check-in. One guardian. Zero friction.</div>
-      <p class="hero-sub">A phone-based daily check-in that tells care teams <strong>which discharged patients need attention today</strong>. Patients get their recovery plan in plain language and answer a few questions on their own phone. Nurses get one ranked list, with the reason next to every name.</p>
+      <p class="hero-sub">A clinical companion app for post-discharge patients — plain-language recovery plans, daily check-ins, and a <strong>research program investigating whether voice can provide an earlier signal of deterioration</strong>.</p>
 
       <div class="hero-numbers">
         <div class="stat reveal">
           <div class="n">&lt;30s</div>
-          <div class="l">a day, tap-only</div>
+          <div class="l">of your day, daily</div>
         </div>
         <div class="stat reveal">
-          <div class="n">7</div>
-          <div class="l">app languages</div>
+          <div class="n">27</div>
+          <div class="l">languages supported</div>
         </div>
         <div class="stat reveal">
           <div class="n">0</div>
@@ -1409,56 +1406,68 @@
       </div>
 
       <div class="hero-ctas">
-        <a class="btn btn-gold" href="https://tethernb.avlynor.com" target="_blank" rel="noopener">Try the live demo →</a>
-        <a class="btn btn-ghost" href="#waitlist">Waitlist</a>
-        <a class="btn btn-ghost" href="#cta">Care teams</a>
+        <a class="btn btn-gold" href="https://tether.avlynor.com" target="_blank" rel="noopener">Try the live demo →</a>
+        <a class="btn btn-ghost" href="https://biomarker.avlynor.com" target="_blank" rel="noopener">Research demo</a>
+        <a class="btn btn-ghost" href="#cta">Talk to us</a>
       </div>
       <p style="margin:12px 0 0;font-size:0.9rem;opacity:0.72">No account needed — open the demo and tap <strong>Demo doctor</strong> or <strong>Demo patient</strong> to sign in.</p>
     </div>
 
-    <!-- RIGHT: follow-up list preview. Reasons are the wording the product
-         itself produces; names and values are made up. -->
+    <!-- RIGHT: biomarker report preview -->
     <div class="hero-preview reveal">
+
+      <!-- Mockup mirrors the real biomarker.avlynor.com/demo aesthetic:
+           cards-in-card, system sans, condition pills, mono metric values. -->
       <div class="bm-card">
-        <div class="tl-note">Illustrative example · not real patient data</div>
+        <div style="text-align:center;font-size:10px;letter-spacing:1px;font-weight:700;color:#b45309;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.4);border-radius:6px;padding:4px 8px;margin-bottom:10px;text-transform:uppercase">Illustrative example — not real patient data · not a validated clinical output</div>
         <div class="bm-head">
           <div>
-            <div class="bm-h1">Today's follow-up list</div>
-            <div class="bm-sub">What the nurse sees · sorted by who needs attention first</div>
+            <div class="bm-h1">Tether Biomarker Engine</div>
+            <div class="bm-sub">Patient p-1043 · Day 6 · <span class="bm-mono">vps-2.9.0</span></div>
+          </div>
+          <div class="bm-statline">
+            <span class="bm-pill bm-pill-normal">SIGNAL OK</span>
           </div>
         </div>
 
-        <div class="tl-row">
-          <span class="tl-badge tl-red" role="img" aria-label="Red">!!</span>
-          <div><div class="tl-name">Patient A</div><div class="tl-why">Red flag reported: calf pain or swelling</div></div>
-          <div class="tl-act">Alert opened<br/>4-hour target</div>
-        </div>
-        <div class="tl-row">
-          <span class="tl-badge tl-amber" role="img" aria-label="Amber">!</span>
-          <div><div class="tl-name">Patient B</div><div class="tl-why">Breathing reported worse than yesterday</div></div>
-          <div class="tl-act">Amber</div>
-        </div>
-        <div class="tl-row">
-          <span class="tl-badge tl-amber" role="img" aria-label="Amber">!</span>
-          <div><div class="tl-name">Patient C</div><div class="tl-why">No daily check-in for 50 hours</div></div>
-          <div class="tl-act">Follow-up opened<br/>24-hour target</div>
-        </div>
-        <div class="tl-row">
-          <span class="tl-badge tl-green" role="img" aria-label="Green">✓</span>
-          <div><div class="tl-name">Patient D</div><div class="tl-why">All answers within expected range</div></div>
-          <div class="tl-act">Green</div>
+        <div class="bm-summary">
+          <strong>Recovering normally.</strong>
+          Within clinical range across the 3-task voice protocol. No nurse action required.
         </div>
 
-        <div class="bm-inner" style="margin-top:16px">
+        <div class="bm-inner">
           <div class="bm-inner-head">
-            <h2 class="bm-h2">What the patient answers</h2>
+            <h2 class="bm-h2">Healthy Voice Index</h2>
+            <span class="bm-pill bm-pill-normal">STABLE</span>
           </div>
-          <div class="tl-q">Pain, breathing, medication, sleep, and the warning signs from their own discharge plan.</div>
-          <div class="tl-opts" aria-hidden="true"><span>Better</span><span>Same</span><span class="on">Worse</span></div>
+          <div class="bm-hvi">
+            <div class="bm-hvi-bar">
+              <div class="bm-hvi-fill" style="width: 84%"></div>
+            </div>
+            <div class="bm-hvi-num"><span class="bm-mono">84</span><span class="bm-hvi-denom">/ 100</span></div>
+          </div>
+        </div>
+
+        <div class="bm-inner">
+          <h2 class="bm-h2">Vocal biomarkers</h2>
+          <div class="bm-metric"><span class="bm-name">Jitter</span><span class="bm-val">0.62 %</span></div>
+          <div class="bm-metric"><span class="bm-name">Shimmer</span><span class="bm-val">3.10 %</span></div>
+          <div class="bm-metric"><span class="bm-name">HNR</span><span class="bm-val">21.4 dB</span></div>
+          <div class="bm-metric"><span class="bm-name">CPPS</span><span class="bm-val">14.8 dB</span></div>
+          <div class="bm-metric"><span class="bm-name">F0 mean</span><span class="bm-val">192 Hz</span></div>
+          <div class="bm-metric"><span class="bm-name">Speech rate</span><span class="bm-val">4.2 syll/s</span></div>
+        </div>
+
+        <div class="bm-inner">
+          <h2 class="bm-h2">Condition risk</h2>
+          <div class="bm-cond"><span class="bm-name">Respiratory infection</span><span class="bm-pill bm-pill-normal">NORMAL</span></div>
+          <div class="bm-cond"><span class="bm-name">Voice dysphonia</span><span class="bm-pill bm-pill-normal">NORMAL</span></div>
+          <div class="bm-cond"><span class="bm-name">Cardiovascular stress</span><span class="bm-pill bm-pill-monitor">MONITOR</span></div>
+          <div class="bm-cond"><span class="bm-name">Sleep-breathing</span><span class="bm-pill bm-pill-normal">NORMAL</span></div>
         </div>
 
         <div class="bm-foot">
-          Sorted by written rules a clinician can read · no AI model in the sorting
+          <span class="bm-mono">POST /analyze</span> · sample 14/30 · 18.4 s
         </div>
       </div>
 
@@ -1472,26 +1481,26 @@
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
     <span class="marquee-item">Venture Cup 2026 regional finalist</span>
+    <span class="marquee-item">Consent-first data handling</span>
     <span class="marquee-item">NYAS Human-Centered AI Challenge winner</span>
     <span class="marquee-item">Built for Nordic healthcare</span>
-    <span class="marquee-item">No hardware required</span>
-    <span class="marquee-item">Daily check-in under 30 seconds</span>
+    <span class="marquee-item">27-language support</span>
+    <span class="marquee-item">Raw audio never stored</span>
     <span class="marquee-item">Plain-language recovery plans</span>
-    <span class="marquee-item">Rules a clinician can read</span>
-    <span class="marquee-item">Every alert has a deadline</span>
-    <span class="marquee-item">App in 7 languages, Swedish included</span>
-    <span class="marquee-item">Colour-blind-safe traffic lights</span>
+    <span class="marquee-item">Daily check-in under 30 seconds</span>
+    <span class="marquee-item">Privacy by design · EU data residency</span>
+    <span class="marquee-item">No hardware required</span>
     <!-- duplicate for seamless loop -->
     <span class="marquee-item">Venture Cup 2026 regional finalist</span>
+    <span class="marquee-item">Consent-first data handling</span>
     <span class="marquee-item">NYAS Human-Centered AI Challenge winner</span>
     <span class="marquee-item">Built for Nordic healthcare</span>
-    <span class="marquee-item">No hardware required</span>
-    <span class="marquee-item">Daily check-in under 30 seconds</span>
+    <span class="marquee-item">27-language support</span>
+    <span class="marquee-item">Raw audio never stored</span>
     <span class="marquee-item">Plain-language recovery plans</span>
-    <span class="marquee-item">Rules a clinician can read</span>
-    <span class="marquee-item">Every alert has a deadline</span>
-    <span class="marquee-item">App in 7 languages, Swedish included</span>
-    <span class="marquee-item">Colour-blind-safe traffic lights</span>
+    <span class="marquee-item">Daily check-in under 30 seconds</span>
+    <span class="marquee-item">Privacy by design · EU data residency</span>
+    <span class="marquee-item">No hardware required</span>
   </div>
 </div>
 
@@ -1514,10 +1523,10 @@
 <section id="problem">
   <h2 class="reveal">The 72-hour black hole</h2>
   <p class="reveal" style="margin-bottom: 16px">
-    Many patients leave hospital and then quietly get worse at home. Discharge is too often a "send and pray" event. Within hours, patients forget much of their instructions — studies report 40–80% of medical information is forgotten immediately (Kessels, J R Soc Med, 2003). Most apps assume health literacy that recovering patients (elderly, medicated, exhausted) simply do not have.
+    Every year, hundreds of thousands of patients survive surgery, then quietly deteriorate at home. Discharge is a "send and pray" event. Within hours, patients forget much of their instructions — studies report 40–80% of medical information is forgotten immediately (Kessels, J R Soc Med, 2003). Most apps assume health literacy that recovering patients (elderly, medicated, exhausted) simply do not have.
   </p>
   <p class="reveal">
-    In a large US Medicare study, about one in five patients was back in hospital within 30 days (Jencks et al., NEJM 2009). Not because treatment failed. Because the safety net collapsed the moment they walked out the door.
+    The result: about one in five Medicare patients was readmitted within 30 days (Jencks et al., NEJM 2009). Not because surgery failed. Because the safety net collapsed the moment they walked out the door.
   </p>
 
   <div class="problem-grid">
@@ -1527,7 +1536,7 @@
     </div>
     <div class="stat-card reveal">
       <div class="n">~1 in 5</div>
-      <div class="l">US Medicare patients back in hospital within 30 days (Jencks et al., NEJM 2009)</div>
+      <div class="l">readmitted within 30 days (Jencks et al., NEJM 2009)</div>
     </div>
   </div>
 </section>
@@ -1536,53 +1545,39 @@
 <!-- HOW TETHER WORKS — 5-step cycle -->
 <!-- ============================================================== -->
 <section id="how">
-  <h2 class="reveal">The patient answers.<br/>Tether sorts.<br/>The nurse decides.</h2>
+  <h2 class="reveal">The human voice<br/>is a biological sensor</h2>
 
   <div class="cycle-intro reveal">
-    Tether sorts and flags. It never diagnoses. Every sorting rule is written down where the clinical team can read it and question it.
+    When fluid builds in the lungs, it increases pressure on the larynx. We are researching whether the resulting acoustic changes may correlate with early physiological deterioration — and whether a short daily voice sample could one day support earlier clinical review. This is an active research program, not yet a validated clinical capability.
   </div>
 
   <div class="cycle">
     <div class="step reveal">
       <div class="step-num">01</div>
-      <div class="step-title">A plan in plain words</div>
-      <div class="step-desc">At discharge, the care team publishes the patient's recovery plan in Tether: what to do, what to watch for, and when to get in touch. The patient opens it on their own phone.</div>
+      <div class="step-title">Baseline calibration</div>
+      <div class="step-desc">A nurse records a 30-second voice fingerprint before the patient leaves the hospital. The baseline is calibrated to the patient's home noise environment, so every future reading is compared against the patient, not against a generic population.</div>
     </div>
     <div class="step reveal">
       <div class="step-num">02</div>
-      <div class="step-title">A daily check-in, tap-only</div>
-      <div class="step-desc">Each day the patient answers a few questions about pain, breathing, medication and sleep, plus the warning signs listed in their own discharge plan. It is taps by default, there is no device to wear, and it opens in the phone's browser.</div>
+      <div class="step-title">Passive home monitoring</div>
+      <div class="step-desc">The patient speaks naturally for 15 seconds each morning. No form. No typing. No app friction. Designed from the ground up for elderly, low-literacy, post-anaesthesia users who cannot navigate a clinical questionnaire.</div>
     </div>
     <div class="step reveal">
       <div class="step-num">03</div>
-      <div class="step-title">Written rules sort the answers</div>
-      <div class="step-desc">Each check-in is sorted green, amber or red by fixed rules. One example: any warning sign answered "yes" is red. The sorting runs on our server and no AI model takes part in it.</div>
+      <div class="step-title">Raw audio never stored · Shredder Protocol</div>
+      <div class="step-desc">A Rust-WASM edge engine can analyse acoustic features entirely on-device; in the current build, clips are processed in memory on EU-resident infrastructure and immediately deleted after analysis. Raw audio is never stored — only derived measurements are retained. Privacy by design, not by promise.</div>
     </div>
     <div class="step reveal">
       <div class="step-num">04</div>
-      <div class="step-title">One ranked list for the nurse</div>
-      <div class="step-desc">The care team sees who needs attention first, with the reason written next to every name. Each colour comes with a symbol, so the list also works for colour-blind staff.</div>
+      <div class="step-title">Nurse Navigator dashboard</div>
+      <div class="step-desc">A Live Recovery Score per patient: green is stable, amber is monitor, red is call now. One nurse can monitor far more patients than traditional daily phone follow-up, because she only acts on the patients who actually need her.</div>
     </div>
     <div class="step reveal">
       <div class="step-num">05</div>
-      <div class="step-title">Alerts with deadlines</div>
-      <div class="step-desc">A red check-in opens an alert with a four-hour target to acknowledge it. Two days without a check-in opens a follow-up of its own. An alert nobody acknowledges in time is sent on to the other clinicians in the unit.</div>
+      <div class="step-title">Sentinel Alert · research direction</div>
+      <div class="step-desc">Today, alerts fire from red-flag answers, worsening trends, and missed check-ins — with acknowledgement deadlines and automatic escalation to a backup clinician. In parallel, we are researching whether acoustic changes could eventually support earlier clinical review. That capability is under development and not yet clinically validated.</div>
     </div>
   </div>
-
-  <div class="scope-note reveal">
-    Tether is a working prototype being prepared for its first hospital pilot. It is not a CE-marked medical device, and it does not replace emergency care.
-  </div>
-</section>
-
-<!-- ============================================================== -->
-<!-- RESEARCH TRACK -->
-<!-- ============================================================== -->
-<section id="research">
-  <h2 class="reveal">A separate research track</h2>
-  <p class="reveal" style="max-width: 68ch">
-    Alongside the check-in product, we run a research programme on whether changes in a patient's voice could one day give care teams an earlier sign of deterioration. This is research. It is not clinically validated, it is not part of the pilot product, and nothing in the check-in product depends on it.
-  </p>
 </section>
 
 <!-- ============================================================== -->
@@ -1590,22 +1585,18 @@
 <!-- ============================================================== -->
 <section id="roi">
   <h2 class="reveal">Built for everyone<br/>in the loop</h2>
-  <div class="audience-grid" style="grid-template-columns: repeat(auto-fit, minmax(230px, 1fr))">
+  <div class="audience-grid">
     <div class="audience-card reveal">
       <h3>Patients</h3>
-      <p>A few taps a day on the phone you already have. Your recovery plan in plain words. If an answer is a warning sign, your care team sees it.</p>
-    </div>
-    <div class="audience-card reveal">
-      <h3>Family and carers</h3>
-      <p>With the patient's consent, a family member can follow how recovery is going instead of guessing.</p>
+      <p>Supported without being overwhelmed. 15 seconds a day, nothing more. No forms. No login battles. No "is this serious?" guessing.</p>
     </div>
     <div class="audience-card reveal">
       <h3>Nurses</h3>
-      <p>One list, sorted by who needs you first, with the reason next to every name. Every alert has an owner and a deadline.</p>
+      <p>Act only when an alert fires. No routine call-arounds. No burnout admin. The dashboard tells you exactly which patient needs you, and why.</p>
     </div>
     <div class="audience-card reveal">
       <h3>Hospitals</h3>
-      <p>No devices to buy, hand out or collect. A follow-up routine that is written down and logged. Small enough to start with one ward.</p>
+      <p>Stop absorbing avoidable readmission costs. Free up beds. Comply with national post-discharge policy, measurably.</p>
     </div>
   </div>
 </section>
@@ -1614,25 +1605,30 @@
 <!-- COMPETITOR COMPARISON -->
 <!-- ============================================================== -->
 <section id="moat">
-  <h2 class="reveal">Why Tether</h2>
-  <p class="competitor-intro reveal">Most remote-monitoring products are built around measuring devices. Tether starts from the phone the patient already owns and the follow-up the ward already wants to do.</p>
+  <h2 class="reveal">Every competitor was<br/>built for the wrong continent</h2>
+  <p class="competitor-intro reveal">Most remote-monitoring platforms are cloud-heavy, English-only, hardware-dependent, and built for US private insurance. Tether is designed from the first line of code for Nordic public healthcare.</p>
 
-  <div class="audience-grid">
-    <div class="audience-card reveal">
-      <h3>Nothing to hand out</h3>
-      <p>No device to procure, ship or collect after discharge, and no app store. The ward gives the patient a link and a one-time code.</p>
-    </div>
-    <div class="audience-card reveal">
-      <h3>Rules, not a black box</h3>
-      <p>The sorting is a short list of written rules. A clinician can read why a patient is red, and disagree.</p>
-    </div>
-    <div class="audience-card reveal">
-      <h3>Silence counts</h3>
-      <p>A patient who stops answering is flagged too. Two days without a check-in lands in the same list as a red answer.</p>
-    </div>
-  </div>
+  <table class="compare reveal">
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th>Tether</th>
+        <th>Typical RPM platforms</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Raw audio never stored · only derived measurements retained</td><td>✓</td><td>✕</td></tr>
+      <tr><td>No hardware required</td><td>✓</td><td>✕</td></tr>
+      <tr><td>27-language support</td><td>✓</td><td>✕</td></tr>
+      <tr><td>Privacy by design · EU-resident patient data</td><td>✓</td><td>✕</td></tr>
+      <tr><td>Guardian NLP plain-language translation</td><td>✓</td><td>✕</td></tr>
+      
+      
+      <tr><td>Patient compared to their own baseline, not a population average</td><td>✓</td><td>✕</td></tr>
+    </tbody>
+  </table>
 
-  <p class="moat reveal">Where Tether does not fit: emergencies, diagnosis, referral and waiting-list management, and long-term chronic care. It is built for the first weeks after discharge.</p>
+  <p class="moat reveal">The moat is not a single feature. It is a stack of decisions that competitors cannot copy quickly.</p>
 </section>
 
 <!-- ============================================================== -->
@@ -1696,7 +1692,7 @@
 </section>
 
 <!-- ============================================================== -->
-<!-- WAITLIST — patients and family -->
+<!-- FINAL CTA — Nordic hospitals / insurers -->
 <!-- ============================================================== -->
 <section id="waitlist" class="signup-section">
   <h2 class="reveal">Join the waitlist</h2>
@@ -1760,7 +1756,7 @@
         <li>If it looks useful, we send a one-page, non-binding letter of intent for you to sign.</li>
         <li>Scope, timing and a data protection agreement are settled in writing before any patient uses Tether.</li>
       </ol>
-      <p>Want to look first? <a href="https://tethernb.avlynor.com" target="_blank" rel="noopener">Open the live demo</a> and tap <strong>Demo doctor</strong>.</p>
+      <p>Want to look first? <a href="https://tether.avlynor.com" target="_blank" rel="noopener">Open the live demo</a> and tap <strong>Demo doctor</strong>.</p>
     </div>
     <form class="signup-card reveal" onsubmit="submitInterest(event)" data-done="Thank you. We have your details and will be in touch to arrange a call.">
       <input type="hidden" name="kind" value="loi" />
@@ -1838,7 +1834,7 @@
     </div>
     <div>© 2026 Avlynor.</div>
     <div>
-      <a href="https://tethernb.avlynor.com" target="_blank" rel="noopener">live demo</a>
+      <a href="https://biomarker.avlynor.com" target="_blank" rel="noopener">biomarker.avlynor.com</a>
       &nbsp;·&nbsp;
       <a href="https://docs.avlynor.com" target="_blank" rel="noopener">technical docs</a>
     </div>
@@ -1892,6 +1888,19 @@
     els.forEach(el => io.observe(el));
   })();
 
+  // -----------------------------------------------------------------
+  // Email capture — for now, just opens a mailto draft to Nitya
+  // (no backend; honest "we'll wire a real form later" behaviour)
+  // -----------------------------------------------------------------
+  function handleCapture(e) {
+    e.preventDefault();
+    const email = document.getElementById('captureEmail').value;
+    const subject = encodeURIComponent('Tether pilot conversation · interested partner');
+    const body = encodeURIComponent(
+      `Hello Nitya,\n\nWe'd like to set up a 30-minute call to discuss a Tether pilot.\n\nOur email: ${email}\nOur organisation: [please fill in]\nDischarge volume we're considering: [please fill in]\n\nThanks,`
+    );
+    window.location.href = `mailto:nmahelay09@gmail.com?subject=${subject}&body=${body}`;
+  }
   // -----------------------------------------------------------------
   // Waitlist and letter-of-intent forms. Posted to the Tether API,
   // which keeps them in the EU database (no third-party form service).
