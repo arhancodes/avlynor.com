@@ -1865,19 +1865,6 @@
   })();
 
   // -----------------------------------------------------------------
-  // Email capture — for now, just opens a mailto draft to Nitya
-  // (no backend; honest "we'll wire a real form later" behaviour)
-  // -----------------------------------------------------------------
-  function handleCapture(e) {
-    e.preventDefault();
-    const email = document.getElementById('captureEmail').value;
-    const subject = encodeURIComponent('Tether pilot conversation · interested partner');
-    const body = encodeURIComponent(
-      `Hello Nitya,\n\nWe'd like to set up a 30-minute call to discuss a Tether pilot.\n\nOur email: ${email}\nOur organisation: [please fill in]\nDischarge volume we're considering: [please fill in]\n\nThanks,`
-    );
-    window.location.href = `mailto:nmahelay09@gmail.com?subject=${subject}&body=${body}`;
-  }
-  // -----------------------------------------------------------------
   // Waitlist and letter-of-intent forms. Posted to the Tether API,
   // which keeps them in the EU database (no third-party form service).
   // -----------------------------------------------------------------
